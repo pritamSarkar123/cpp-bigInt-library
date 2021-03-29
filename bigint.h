@@ -1,3 +1,5 @@
+#ifndef BIGINT
+#define BIGINT
 #include<iostream>
 #include<string>
 #include<regex>
@@ -7,37 +9,17 @@
 using namespace std;
 class bigIntException:public exception{
 	public:
-		string what(){
-			return "Not a valid integer";
-		}
+		string what();
 };
 
 class bigInt{
 	string integer;
 	public:
-		bigInt(){
-			integer="";
-		}
-		bigInt(int number){
-			integer=to_string(number);
-		}
-		bigInt(long number){
-			integer=to_string(number);
-		}
-		bigInt(long long number){
-			integer=to_string(number);
-		}
-		bigInt(string input_string) throw (bigIntException){
-			if(checkValidInt(input_string)){
-				if(input_string[0]=='+'){
-					integer=input_string.substr(1,input_string.length()-1);
-				}else{
-					integer=input_string;
-				}
-			}else{
-				throw bigIntException();
-			}
-		}
+		bigInt();
+		bigInt(int number);
+		bigInt(long number);
+		bigInt(long long number);
+		bigInt(string input_string) throw (bigIntException);
 		string get();
 		string big_abs();
 		static bool checkValidInt(string input_string);
@@ -168,39 +150,4 @@ class bigInt{
 		static bigInt big_bitwise_xor_not(bigInt b1,bigInt b2); //b1 ^ ~b2
 		//-----------------------------------------------
 };
-string bigInt::get(){
-	//returns the actual int string
-	return integer;
-}
-string bigInt::big_abs(){
-	if(integer[0]=='-') return integer.substr(1,integer.length()-1);
-	return integer;
-}
-bool bigInt::checkValidInt(string input_string){
-	//check whether the string of a valid integer or not
-	regex int_format("[+-]?[0-9]+");
-	if(regex_match(input_string,int_format)) return true;
-	else return false;
-}
-string bigInt::value(int number) throw (bigIntException){
-	//returns the value as string
-	string input_string=to_string(number);
-	if(checkValidInt(input_string)){
-		return input_string;
-	}else{
-		throw bigIntException();
-	}
-}
-int main(){
-	try{
-		bigInt bi("-123");
-		cout<<"completed"<<"\n";
-		// cout<<bigInt.value(145)<<"\n";
-		cout<<bi.get()<<"\n";
-		cout<<bi.big_abs()<<"\n";
-
-	}catch(bigIntException e){
-		cout<<e.what()<<"\n";
-	}
-	return 0;
-}
+#endif
