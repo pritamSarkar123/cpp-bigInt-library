@@ -17,11 +17,12 @@ bigInt::bigInt(long long number){
 }
 bigInt::bigInt(string input_string) throw (bigIntException){
 	if(checkValidInt(input_string)){
-		if(input_string[0]=='+'){
-			integer=input_string.substr(1,input_string.length()-1);
-		}else{
-			integer=input_string;
+		int i=0;
+		while(input_string[i]=='0' || input_string[i]=='+'){
+			i++;
 		}
+		if(i==input_string.length()) integer="0";
+		else integer=input_string.substr(i,input_string.length()-i);
 	}else{
 		throw bigIntException();
 	}

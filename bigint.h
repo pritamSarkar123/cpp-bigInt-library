@@ -6,6 +6,7 @@
 #include<exception>
 #include<cstdlib>
 #include<vector>
+#include<algorithm>
 using namespace std;
 class bigIntException:public exception{
 	public:
@@ -22,19 +23,43 @@ class bigInt{
 		bigInt(string input_string) throw (bigIntException);
 		string get();
 		string big_abs();
+		//--------------------------------------------------------------
 		static bool checkValidInt(string input_string);
-		static string value(int number) throw (bigIntException);
-		//TODO: remaining
+		static string value(int number);
+		static string value(long number);
+		static string value(long long number);
+		//-------------------------------------------------------
 		int hashCode();
-		string compare_to(bigInt another); 
-		string compare_to(string input_string);
-		string compare_to(int number);
-		/*
-			(a,b) compare > 0  b-a > 0 b is greater than a
-			(a,b) compare < 0  b-a < 0 a is greater than b
-			(a,b) compare == 0 a==b
-
-		*/
+		int compare_to(bigInt another); 
+		int compare_to(string input_string) throw (bigIntException);
+		int compare_to(int number);
+		int compare_to(long number);
+		int compare_to(long long number);
+		static big_compare(string s1,string s2);
+		//-------------------------------------------------------------
+		bool is_equal(bigInt another);
+		bool is_equal(string input_string) throw (bigIntException);
+		bool is_equal(int number);
+		bool is_equal(long number);
+		bool is_equal(long long number);
+		//-----------------------------------------------------------------
+		static string helper_sub(string s1,string s2);
+		static string big_sub(string s1,string s2);
+		static string big_sum(string s1,string s2);
+		//-----------------------------------------------------------
+		bigInt big_substract(int number);
+		bigInt big_substract(long number);
+		bigInt big_substract(long long number);
+		bigInt big_substract(string input_string) throw (bigIntException);
+		bigInt big_substract(bigInt another);
+		//----------------------------------------------------------
+		bigInt big_add(int number);
+		bigInt big_add(long number);
+		bigInt big_add(long long number);
+		bigInt big_add(string input_string) throw (bigIntException);
+		bigInt big_add(bigInt another);
+		//----------------------------------------------------------
+		//TODO: remaining
 		int bit_length();
 		int bit_count();
 		double toDouble(); // making the bigInt to double
@@ -44,12 +69,7 @@ class bigInt{
 		long long toLongLong();// bigInt to long
 		bool primeProbability(int certainly);
 		//----------------------------------
-		bool is_equal(bigInt another);
-		bool is_equal(string input_string);
-		bool is_equal(int number);
-		bool is_equal(long number);
-		bool is_equal(long long number);
-		//------------------------
+		
 		bigInt big_gcd(bigInt another);
 		bigInt big_gcd(string input_string);
 		bigInt big_gcd(int number);
@@ -129,17 +149,6 @@ class bigInt{
 		vector<bigInt> big_divide_and_remainder(bigInt another);
 		vector<bigInt> big_divide_and_remainder(long long number);
 		//-------------------------------------------------------------
-		bigInt big_substract(int number);
-		bigInt big_substract(long number);
-		bigInt big_substract(long long number);
-		bigInt big_substract(string input_string);
-		bigInt big_substract(bigInt another);
-		//----------------------------------------------------------
-		bigInt big_add(int number);
-		bigInt big_add(long number);
-		bigInt big_add(long long number);
-		bigInt big_add(string input_string);
-		bigInt big_add(bigInt another);
 		//----------------------------------------------------
 		static bigInt big_bitwise_not(bigInt b); //~b
 		static bigInt big_bitwise_and(bigInt b1,bigInt b2); // b1 & b2

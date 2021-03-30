@@ -12,7 +12,7 @@ string bigInt::get(){
 	return integer;
 }
 string bigInt::big_abs(){
-	if(integer[0]=='-') return integer.substr(1,integer.length()-1);
+	if(integer[0]=='-') return integer.substr(1,integer.length()-1); //1st one must be the sign
 	return integer;
 }
 bool bigInt::checkValidInt(string input_string){
@@ -21,12 +21,12 @@ bool bigInt::checkValidInt(string input_string){
 	if(regex_match(input_string,int_format)) return true;
 	else return false;
 }
-string bigInt::value(int number) throw (bigIntException){
-	//returns the value as string
-	string input_string=to_string(number);
-	if(checkValidInt(input_string)){
-		return input_string;
-	}else{
-		throw bigIntException();
-	}
+string bigInt::value(int number){
+	return to_string(number);
+}
+string bigInt::value(long number){
+	return to_string(number);
+}
+string bigInt::value(long long number){
+	return to_string(number);
 }
