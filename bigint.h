@@ -7,6 +7,7 @@
 #include<cstdlib>
 #include<vector>
 #include<algorithm>
+#include<climits>
 using namespace std;
 class bigIntException:public exception{
 	public:
@@ -74,14 +75,17 @@ class bigInt{
 		static bigInt big_factorial(string input_string) throw (bigIntException);
 		static bigInt big_factorial(bigInt another);
 		//--------------------------------------------------------------
-		//TODO: remaining
-		int bit_length();
-		int bit_count();
+		bigInt big_negate();
+		//--------------------------------------------------------------
 		double toDouble(); // making the bigInt to double
 		float toFloat(); //making the bigint into float
 		int toInt();// bigInt to int
 		long toLong();//  bigInt to long
 		long long toLongLong();// bigInt to long
+		//----------------------------------------------------------------
+		//TODO: remaining
+		int bit_length();
+		int bit_count();
 		bool primeProbability(int certainly);
 		//----------------------------------
 		
@@ -124,7 +128,7 @@ class bigInt{
 		bigInt big_mod_pow(long exponent,long number);
 		bigInt big_mod_pow(long long exponent,long long number);
 		//---------------------------------------------
-		bigInt big_negate();
+		
 		//--------------------------------------------
 		bigInt big_pow(bigInt another);
 		bigInt big_pow(string input_string);

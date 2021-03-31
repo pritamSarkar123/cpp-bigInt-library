@@ -30,3 +30,65 @@ string bigInt::value(long number){
 string bigInt::value(long long number){
 	return to_string(number);
 }
+bigInt bigInt::big_negate(){
+	if(integer[0]=='-') return bigInt(integer.substr(1,integer.length()-1));
+	else return bigInt("-"+integer);
+}
+
+/*
+	double toDouble(); // making the bigInt to double
+	float toFloat(); //making the bigint into float
+	int toInt();// bigInt to int
+	long toLong();//  bigInt to long
+	long long toLongLong();// bigInt to long
+*/
+float bigInt::toFloat(){
+	string s = integer[0]=='-'?integer.substr(1,integer.length()-1):integer;
+	int temp=0;
+	int i=0;
+	while(temp<INT_MAX  && i<s.length()){
+		temp=((temp*10)+(s[i]-'0'));
+		i++;
+	}
+	return integer[0]=='-'?-(float)temp:(float)temp;
+}
+double bigInt::toDouble(){
+	string s = integer[0]=='-'?integer.substr(1,integer.length()-1):integer;
+	int temp=0;
+	int i=0;
+	while(temp<INT_MAX  && i<s.length()){
+		temp=((temp*10)+(s[i]-'0'));
+		i++;	
+	}
+	return integer[0]=='-'?-(double)temp:(double)temp;
+}
+int bigInt::toInt(){
+	string s = integer[0]=='-'?integer.substr(1,integer.length()-1):integer;
+	int temp=0;
+	int i=0;
+	while(temp<INT_MAX  && i<s.length()){
+		temp=((temp*10)+(s[i]-'0'));
+		i++;
+	}
+	return integer[0]=='-'?-temp:temp;
+}
+long bigInt::toLong(){
+	string s = integer[0]=='-'?integer.substr(1,integer.length()-1):integer;
+	long temp=0;
+	long i=0;
+	while(temp<LONG_MAX  && i<s.length()){
+		temp=((temp*(long)10)+(long)(s[i]-'0'));
+		i+=(long)1;
+	}
+	return integer[0]=='-'?-temp:temp;
+}
+long long bigInt::toLongLong(){
+	string s = integer[0]=='-'?integer.substr(1,integer.length()-1):integer;
+	long long temp=0;
+	long long i=0;
+	while(temp<LLONG_MAX  && i<s.length()){
+		temp=((temp*(long long)10)+(long long)(s[i]-'0'));
+		i+=(long long)1;
+	}
+	return integer[0]=='-'?-temp:temp;
+}
