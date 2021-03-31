@@ -35,7 +35,7 @@ class bigInt{
 		int compare_to(int number);
 		int compare_to(long number);
 		int compare_to(long long number);
-		static big_compare(string s1,string s2);
+		static int big_compare(string s1,string s2);
 		//-------------------------------------------------------------
 		bool is_equal(bigInt another);
 		bool is_equal(string input_string) throw (bigIntException);
@@ -46,6 +46,8 @@ class bigInt{
 		static string helper_sub(string s1,string s2);
 		static string big_sub(string s1,string s2);
 		static string big_sum(string s1,string s2);
+		static string big_mul(string s1, string s2);
+		static string big_fact(string s1);
 		//-----------------------------------------------------------
 		bigInt big_substract(int number);
 		bigInt big_substract(long number);
@@ -59,6 +61,19 @@ class bigInt{
 		bigInt big_add(string input_string) throw (bigIntException);
 		bigInt big_add(bigInt another);
 		//----------------------------------------------------------
+		bigInt big_multiply(int number);
+		bigInt big_multiply(long number);
+		bigInt big_multiply(long long number);
+		bigInt big_multiply(string input_string) throw (bigIntException);
+		bigInt big_multiply(bigInt another);
+		
+		//--------------------------------------------------------------------
+		static bigInt big_factorial(int number);
+		static bigInt big_factorial(long number);
+		static bigInt big_factorial(long long number);
+		static bigInt big_factorial(string input_string) throw (bigIntException);
+		static bigInt big_factorial(bigInt another);
+		//--------------------------------------------------------------
 		//TODO: remaining
 		int bit_length();
 		int bit_count();
@@ -130,12 +145,7 @@ class bigInt{
 		int big_signum();//Returns the signum function of this BigInteger.
 		bool big_test_bit(int n); //Returns true if and only if the designated bit is set.
 		vector<int> big_byte_array(); //Returns a byte array containing the two's-complement representation of this BigInteger.
-		//------------------------------------------------------
-		bigInt big_multiply(int number);
-		bigInt big_multiply(long number);
-		bigInt big_multiply(long long number);
-		bigInt big_multiply(string input_string);
-		bigInt big_multiply(bigInt another);
+		
 		//--------------------------------------------------------
 		bigInt big_divide(int number);
 		bigInt big_divide(string input_string);
