@@ -1,0 +1,5 @@
+// assignment operator
+
+void operator = (const point &p){
+	x=p.x;y=p.y;
+}

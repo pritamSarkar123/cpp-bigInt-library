@@ -5,6 +5,14 @@
 	big_abs()
 	checkValidInt()
 	value()
+	double toDouble(); // making the bigInt to double
+	float toFloat(); //making the bigint into float
+	int toInt();// bigInt to int
+	long toLong();//  bigInt to long
+	long long toLongLong();// bigInt to long
+	bigInt operator ! ();
+	operator = (const bigint &another);
+
 */
 
 string bigInt::get(){
@@ -30,9 +38,16 @@ string bigInt::value(long number){
 string bigInt::value(long long number){
 	return to_string(number);
 }
-bigInt bigInt::big_negate(){
-	if(integer[0]=='-') return bigInt(integer.substr(1,integer.length()-1));
-	else return bigInt("-"+integer);
+
+// ~b1
+bigInt bigInt::operator ! (){
+	bigInt b;
+	b.integer = (integer[0]=='-') ? integer.substr(1,integer.length()-1) : "-"+integer;
+	return b;
+}
+// b1 = b2
+void bigInt::operator = (const bigInt &another){
+	integer=another.integer;
 }
 
 /*

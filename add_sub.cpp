@@ -1,57 +1,115 @@
 #include "bigInt.h"
 /*
 	
-		bigInt big_substract(int number);
-		bigInt big_substract(long number);
-		bigInt big_substract(long long number);
-		bigInt big_substract(string input_string) throw (bigIntException);
-		bigInt big_substract(bigInt another);
+		bigInt operator - (int number);
+		bigInt operator - (long number);
+		bigInt operator - (long long number);
+		bigInt operator - (string input_string) throw (bigIntException);
+		bigInt operator - (bigInt another);
 		//----------------------------------------------------------
-		bigInt big_add(int number);
-		bigInt big_add(long number);
-		bigInt big_add(long long number);
-		bigInt big_add(string input_string) throw (bigIntException);
-		bigInt big_add(bigInt another);
+		bigInt operator + (int number);
+		bigInt operator + (long number);
+		bigInt operator + (long long number);
+		bigInt operator + (string input_string) throw (bigIntException);
+		bigInt operator + (bigInt another);
 		//-------------------------------------------
+		void operator ++ ();
+		void operator -- ();
+		//---------------------------------------------
+		void operator += (int number);
+		void operator += (long number);
+		void operator += (long long number);
+		void operator += (string input_string) throw (bigIntException);
+		void operator += (bigInt another);
+		//------------------------------------------------------
+		void operator -= (int number);
+		void operator -= (long number);
+		void operator -= (long long number);
+		void operator -= (string input_string) throw (bigIntException);
+		void operator -= (bigInt another);
+		//------------------------------------------------------
 		static string helper_sub(string s1,string s2);
 		static string big_sub(string s1,string s2);
 		static string big_sum(string s1,string s2);
 */
-bigInt bigInt::big_substract(int number){
+bigInt bigInt:: operator - (int number){
 	return bigInt(big_sub(integer,to_string(number)));
 }
-bigInt bigInt::big_substract(long number){
+bigInt bigInt:: operator - (long number){
 	return bigInt(big_sub(integer,to_string(number)));
 }
-bigInt bigInt::big_substract(long long number){
+bigInt bigInt:: operator - (long long number){
 	return bigInt(big_sub(integer,to_string(number)));
 }
-bigInt bigInt::big_substract(bigInt another){
+bigInt bigInt:: operator - (bigInt another){
 	return bigInt(big_sub(integer,another.integer));
 }
-bigInt bigInt::big_substract(string input_string) throw(bigIntException){
+bigInt bigInt:: operator - (string input_string) throw(bigIntException){
 	if(checkValidInt(input_string))
 		return bigInt(big_sub(integer,input_string));
 	else throw bigIntException();
 }
 //-------------------------------------------------------
-bigInt bigInt::big_add(int number){
+bigInt bigInt:: operator + (int number){
 	return bigInt(big_sum(integer,to_string(number)));
 }
-bigInt bigInt::big_add(long number){
+bigInt bigInt:: operator + (long number){
 	return bigInt(big_sum(integer,to_string(number)));
 }
-bigInt bigInt::big_add(long long number){
+bigInt bigInt:: operator + (long long number){
 	return bigInt(big_sum(integer,to_string(number)));
 }
-bigInt bigInt::big_add(bigInt another){
+bigInt bigInt:: operator + (bigInt another){
 	return bigInt(big_sum(integer,another.integer));
 }
-bigInt bigInt::big_add(string input_string) throw(bigIntException){
+bigInt bigInt:: operator + (string input_string) throw(bigIntException){
 	if(checkValidInt(input_string))
 		return bigInt(big_sum(integer,input_string));
 	else throw bigIntException();
 }
+//-----------------------------------------------
+void bigInt:: operator ++ (){
+	integer = big_sum(integer,"1"); 
+}
+void bigInt:: operator += (int number){
+	integer = big_sum(integer,to_string(number)); 
+}
+void bigInt:: operator += (long number){
+	integer = big_sum(integer,to_string(number)); 
+}
+void bigInt:: operator += (long long number){
+	integer = big_sum(integer,to_string(number)); 
+}
+void bigInt:: operator += (bigInt another){
+	integer = big_sum(integer,another.integer);
+}
+void bigInt:: operator += (string input_string) throw (bigIntException){
+	if(checkValidInt(input_string))
+		integer=big_sum(integer,input_string);
+	else throw bigIntException();
+}
+//---------------------------------------------------------------
+void bigInt:: operator -- (){
+	integer = big_sub(integer,"1"); 
+}
+void bigInt:: operator -= (int number){
+	integer = big_sub(integer,to_string(number)); 
+}
+void bigInt:: operator -= (long number){
+	integer = big_sub(integer,to_string(number)); 
+}
+void bigInt:: operator -= (long long number){
+	integer = big_sub(integer,to_string(number)); 
+}
+void bigInt:: operator -= (bigInt another){
+	integer = big_sub(integer,another.integer);
+}
+void bigInt:: operator -= (string input_string) throw (bigIntException){
+	if(checkValidInt(input_string))
+		integer=big_sum(integer,input_string);
+	else throw bigIntException();
+}
+
 //-----------------------------------------------------------
 string bigInt::big_sub(string s1,string s2){
 	if(!big_compare(s1,s2)) return "0"; // if a and b both equal 

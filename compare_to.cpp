@@ -1,53 +1,54 @@
 #include "bigInt.h"
 /*
-	int compare_to(bigInt another); 
-	int compare_to(string input_string) throw (bigIntException);
-	int compare_to(int number);
-	int compare_to(long number);
-	int compare_to(long long number);
+	int operator > (bigInt another); 
+	int operator > (string input_string) throw (bigIntException);
+	int operator > (int number);
+	int operator > (long number);
+	int operator > (long long number);
 	static int big_compare(string s1,string s2);
 	//-------------------------------------------------
-	bool is_equal(bigInt another);
-	bool is_equal(string input_string) throw (bigIntException);
-	bool is_equal(int number);
-	bool is_equal(long number);
-	bool is_equal(long long number);
+	bool operator == (bigInt another);
+	bool operator == (string input_string) throw (bigIntException);
+	bool operator == (int number);
+	bool operator == (long number);
+	bool operator == (long long number);
 */
 /*
 	s1 > s2 return 1
 	s1 < s2 return -1
 	s1 == s2 return 0  then is_equal true
 */
-bool bigInt::is_equal(bigInt another){
-	return compare_to(another)==0?true:false;
+bool bigInt::operator == (bigInt another){
+	return big_compare(integer,another.integer)==0?true:false;
 }
-bool bigInt::is_equal(string input_string) throw (bigIntException){
+bool bigInt::operator == (string input_string) throw (bigIntException){
 	if(checkValidInt(input_string)){
-		return compare_to(input_string)==0?true:false;
+		return big_compare(integer,input_string)==0?true:false;
 	}else throw bigIntException();
 }
-bool bigInt::is_equal(int number){
-	return compare_to(number)==0?true:false;
+bool bigInt::operator == (int number){
+	return big_compare(integer,to_string(number))==0?true:false;
 }
-bool bigInt::is_equal(long number){
-	return compare_to(number)==0?true:false;
+bool bigInt::operator == (long number){
+	return big_compare(integer,to_string(number))==0?true:false;
 }
-bool bigInt::is_equal(long long number){
-	return compare_to(number)==0?true:false;
+bool bigInt::operator == (long long number){
+	return big_compare(integer,to_string(number))==0?true:false;
 }
-int bigInt::compare_to(bigInt another){
+int bigInt::operator > (bigInt another){
 	return big_compare(integer, another.integer);
 }
-int bigInt::compare_to(int number){
+int bigInt::operator > (int number){
 	return big_compare(integer,to_string(number));
 }
-int bigInt::compare_to(long number){
+int bigInt::operator > (long number){
 	return big_compare(integer,to_string(number));
 }
-int bigInt::compare_to(long long number){
+int bigInt::operator > (long long number){
 	return big_compare(integer,to_string(number));
 }
-int bigInt::compare_to(string input_string) throw (bigIntException){
+
+int bigInt::operator > (string input_string) throw (bigIntException){
 	if(checkValidInt(input_string)){
 		return big_compare(integer,input_string);
 	}else throw bigIntException();

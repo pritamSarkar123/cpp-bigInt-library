@@ -1,10 +1,19 @@
 #include "bigInt.h"
 /*
-	bigInt big_multiply(int number);
-		bigInt big_multiply(long number);
-		bigInt big_multiply(long long number);
-		bigInt big_multiply(string input_string) throw (bigIntException);
-		bigInt big_multiply(bigInt another);
+		
+		bigInt operator * (int number);
+		bigInt operator * (long number);
+		bigInt operator * (long long number);
+		bigInt operator * (string input_string) throw (bigIntException);
+		bigInt operator * (bigInt another);
+
+
+		void operator *= (int number);
+		void operator *= (long number);
+		void operator *= (long long number);
+		void operator *= (string input_string) throw (bigIntException);
+		void operator *= (bigInt another);	
+
 		static string big_mul(string s1, string s2);
 	
 */
@@ -17,26 +26,47 @@
 		static string big_fact(string s1);
 
 */
-bigInt bigInt::big_multiply(int number){
+bigInt bigInt:: operator * (int number){
 	return bigInt(big_mul(integer,to_string(number)));
 }
-bigInt bigInt::big_multiply(long number){
+bigInt bigInt:: operator * (long number){
 	return bigInt(big_mul(integer,to_string(number)));
 }
-bigInt bigInt::big_multiply(long long number){
+bigInt bigInt:: operator * (long long number){
 	return bigInt(big_mul(integer,to_string(number)));
 }
-bigInt bigInt::big_multiply(bigInt another){
+bigInt bigInt:: operator * (bigInt another){
 	return bigInt(big_mul(integer,another.integer));
 }
-bigInt bigInt::big_multiply(string input_string) throw (bigIntException){
+bigInt bigInt:: operator * (string input_string) throw (bigIntException){
 	if(checkValidInt(input_string)){
 		return bigInt(big_mul(integer,input_string));
 	}else{
 		throw bigIntException();
 	}
 }
+//---------------------------------------------------------------------
+void bigInt:: operator *= (int number){
+	integer = big_mul(integer,to_string(number));
+}
+void bigInt:: operator *= (long number){
+	integer = big_mul(integer,to_string(number));
+}
+void bigInt:: operator *= (long long number){
+	integer = big_mul(integer,to_string(number));
+}
+void bigInt:: operator *= (bigInt another){
+	integer = big_mul(integer,another.integer);
+}
+void bigInt:: operator *= (string input_string) throw (bigIntException){
+	if(checkValidInt(input_string)){
+		integer = big_mul(integer,input_string);
+	}else{
+		throw bigIntException();
+	}
+}
 
+//---------------------------------------------------------------------
 
 string bigInt::big_mul(string s1, string s2){
 	if(s1=="0" || s2=="0") return "0";

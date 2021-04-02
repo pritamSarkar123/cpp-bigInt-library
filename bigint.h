@@ -24,25 +24,26 @@ class bigInt{
 		bigInt(string input_string) throw (bigIntException);
 		string get();
 		string big_abs();
+		bigInt operator ! ();
+		void operator = (const bigInt &another);
 		//--------------------------------------------------------------
 		static bool checkValidInt(string input_string);
 		static string value(int number);
 		static string value(long number);
 		static string value(long long number);
 		//-------------------------------------------------------
-		int hashCode();
-		int compare_to(bigInt another); 
-		int compare_to(string input_string) throw (bigIntException);
-		int compare_to(int number);
-		int compare_to(long number);
-		int compare_to(long long number);
+		int operator > (bigInt another); 
+		int operator > (string input_string) throw (bigIntException);
+		int operator > (int number);
+		int operator > (long number);
+		int operator > (long long number);
 		static int big_compare(string s1,string s2);
 		//-------------------------------------------------------------
-		bool is_equal(bigInt another);
-		bool is_equal(string input_string) throw (bigIntException);
-		bool is_equal(int number);
-		bool is_equal(long number);
-		bool is_equal(long long number);
+		bool operator == (bigInt another);
+		bool operator == (string input_string) throw (bigIntException);
+		bool operator == (int number);
+		bool operator == (long number);
+		bool operator == (long long number);
 		//-----------------------------------------------------------------
 		static string helper_sub(string s1,string s2);
 		static string big_sub(string s1,string s2);
@@ -50,24 +51,44 @@ class bigInt{
 		static string big_mul(string s1, string s2);
 		static string big_fact(string s1);
 		//-----------------------------------------------------------
-		bigInt big_substract(int number);
-		bigInt big_substract(long number);
-		bigInt big_substract(long long number);
-		bigInt big_substract(string input_string) throw (bigIntException);
-		bigInt big_substract(bigInt another);
+		bigInt operator - (int number);
+		bigInt operator - (long number);
+		bigInt operator - (long long number);
+		bigInt operator - (string input_string) throw (bigIntException);
+		bigInt operator - (bigInt another);
 		//----------------------------------------------------------
-		bigInt big_add(int number);
-		bigInt big_add(long number);
-		bigInt big_add(long long number);
-		bigInt big_add(string input_string) throw (bigIntException);
-		bigInt big_add(bigInt another);
-		//----------------------------------------------------------
-		bigInt big_multiply(int number);
-		bigInt big_multiply(long number);
-		bigInt big_multiply(long long number);
-		bigInt big_multiply(string input_string) throw (bigIntException);
-		bigInt big_multiply(bigInt another);
-		
+		bigInt operator + (int number);
+		bigInt operator + (long number);
+		bigInt operator + (long long number);
+		bigInt operator + (string input_string) throw (bigIntException);
+		bigInt operator + (bigInt another);
+		//-------------------------------------------
+		void operator ++ ();
+		void operator -- ();
+		//---------------------------------------------
+		void operator += (int number);
+		void operator += (long number);
+		void operator += (long long number);
+		void operator += (string input_string) throw (bigIntException);
+		void operator += (bigInt another);
+		//------------------------------------------------------
+		void operator -= (int number);
+		void operator -= (long number);
+		void operator -= (long long number);
+		void operator -= (string input_string) throw (bigIntException);
+		void operator -= (bigInt another);
+		//------------------------------------------------------
+		bigInt operator * (int number);
+		bigInt operator * (long number);
+		bigInt operator * (long long number);
+		bigInt operator * (string input_string) throw (bigIntException);
+		bigInt operator * (bigInt another);
+		//-------------------------------------------------------------
+		void operator *= (int number);
+		void operator *= (long number);
+		void operator *= (long long number);
+		void operator *= (string input_string) throw (bigIntException);
+		void operator *= (bigInt another);	
 		//--------------------------------------------------------------------
 		static bigInt big_factorial(int number);
 		static bigInt big_factorial(long number);
@@ -75,7 +96,6 @@ class bigInt{
 		static bigInt big_factorial(string input_string) throw (bigIntException);
 		static bigInt big_factorial(bigInt another);
 		//--------------------------------------------------------------
-		bigInt big_negate();
 		//--------------------------------------------------------------
 		double toDouble(); // making the bigInt to double
 		float toFloat(); //making the bigint into float
@@ -84,6 +104,7 @@ class bigInt{
 		long long toLongLong();// bigInt to long
 		//----------------------------------------------------------------
 		//TODO: remaining
+		int hashCode();
 		int bit_length();
 		int bit_count();
 		bool primeProbability(int certainly);

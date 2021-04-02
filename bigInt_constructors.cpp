@@ -18,7 +18,7 @@ bigInt::bigInt(long long number){
 bigInt::bigInt(string input_string) throw (bigIntException){
 	if(checkValidInt(input_string)){
 		int i=0;
-		while(input_string[i]=='0' || input_string[i]=='+'){
+		while((input_string[i]=='0' || input_string[i]=='+') && i<input_string.length()){
 			i++;
 		}
 		if(i==input_string.length()) integer="0";
