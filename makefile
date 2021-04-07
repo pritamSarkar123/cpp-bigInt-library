@@ -1,5 +1,5 @@
-big_int_test: application_my.o bigInt_constructors.o methods_one.o compare_to.o add_sub.o big_mult.o
-	g++ application_my.o bigInt_constructors.o methods_one.o compare_to.o add_sub.o big_mult.o -o big_int_test
+big_int_test: application_my.o bigInt_constructors.o methods_one.o compare_to.o add_sub.o big_mult.o big_div_pow.o
+	g++ application_my.o bigInt_constructors.o methods_one.o compare_to.o add_sub.o big_mult.o big_div_pow.o -o big_int_test
 application_my.o: application_my.cpp
 	g++ -c application_my.cpp
 bigInt_constructors.o: bigInt_constructors.cpp
@@ -12,6 +12,8 @@ add_sub.o: add_sub.cpp
 	g++ -c add_sub.cpp
 big_mult.o: big_mult.cpp
 	g++ -c big_mult.cpp
+big_div_pow.o: big_div_pow.cpp
+	g++ -c big_div_pow.cpp
 clean: 
 	rm *o big_int_test
 

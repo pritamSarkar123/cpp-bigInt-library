@@ -18,12 +18,12 @@
 	
 */
 /*
-		static bigInt big_factorial(int number);
-		static bigInt big_factorial(long number);
-		static bigInt big_factorial(long long number);
-		static bigInt big_factorial(string input_string) throw (bigIntException);
-		static bigInt big_factorial(bigInt another);
-		static string big_fact(string s1);
+		static bigInt big_factorial(const int &number);
+		static bigInt big_factorial(const long &number);
+		static bigInt big_factorial(const long long &number);
+		static bigInt big_factorial(const string &input_string) throw (bigIntException);
+		static bigInt big_factorial(const bigInt &another);
+		static string big_fact(const string &s1);
 
 */
 bigInt bigInt:: operator * (int number){
@@ -93,7 +93,7 @@ string bigInt::big_mul(string s1, string s2){
 	return s;
 }
 
-string bigInt::big_fact(string s1){
+string bigInt::big_fact(const string &s1){
 	if(s1=="0") return "1";
 	if(s1[0]=='-') return "0";
 	string s2="2";
@@ -106,20 +106,20 @@ string bigInt::big_fact(string s1){
 	s2=big_sum(s2,"1");
 	return s;
 }
-bigInt bigInt::big_factorial(int number){
+bigInt bigInt::big_factorial(const int &number){
 	return bigInt(big_fact(to_string(number)));
 }
-bigInt bigInt::big_factorial(long number){
+bigInt bigInt::big_factorial(const long &number){
 	return bigInt(big_fact(to_string(number)));
 }
-bigInt bigInt::big_factorial(long long number){
+bigInt bigInt::big_factorial(const long long &number){
 	return bigInt(big_fact(to_string(number)));
 }
-bigInt bigInt::big_factorial(string input_string) throw (bigIntException){
+bigInt bigInt::big_factorial(const string &input_string) throw (bigIntException){
 	if(checkValidInt(input_string)){
 		return bigInt(big_fact(input_string));
 	}else throw bigIntException();
 }
-bigInt bigInt::big_factorial(bigInt another){
+bigInt bigInt::big_factorial(const bigInt &another){
 	return bigInt(big_fact(another.integer));
 }

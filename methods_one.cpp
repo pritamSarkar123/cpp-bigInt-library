@@ -13,6 +13,15 @@
 	bigInt operator ! ();
 	operator = (const bigint &another);
 
+	//-----------------------------------------
+		static bool big_even (const bigInt &another); 
+		static bool big_even (const string &input_string) throw (bigIntException);
+		static bool big_even (const int &number);
+		static bool big_even (const long &number);
+		static bool big_even (const long long &number);
+		static bool if_even(const string &s);
+	//-----------------------------------------
+
 */
 
 string bigInt::get(){
@@ -50,13 +59,6 @@ void bigInt::operator = (const bigInt &another){
 	integer=another.integer;
 }
 
-/*
-	double toDouble(); // making the bigInt to double
-	float toFloat(); //making the bigint into float
-	int toInt();// bigInt to int
-	long toLong();//  bigInt to long
-	long long toLongLong();// bigInt to long
-*/
 float bigInt::toFloat(){
 	string s = integer[0]=='-'?integer.substr(1,integer.length()-1):integer;
 	int temp=0;
@@ -106,4 +108,25 @@ long long bigInt::toLongLong(){
 		i+=(long long)1;
 	}
 	return integer[0]=='-'?-temp:temp;
+}
+
+bool bigInt::if_even(const string &s){
+	return ((s[s.length()-1] - '0') & 1)==0 ? true : false;
+}
+bool bigInt::big_even (const int &number){
+	return if_even(to_string(number));
+}
+bool bigInt::big_even (const long &number){
+	return if_even(to_string(number));
+}
+bool bigInt::big_even (const long long &number){
+	return if_even(to_string(number));
+}
+bool bigInt::big_even (const bigInt &another){
+	return if_even(another.integer);
+}
+bool bigInt::big_even (const string &input_string) throw (bigIntException){
+	if(checkValidInt(input_string)){
+		return if_even(input_string);
+	}else throw bigIntException();
 }

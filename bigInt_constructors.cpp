@@ -1,8 +1,13 @@
 #include "bigInt.h"
-string bigIntException::what(){
-	return "Not a valid integer";
+bigIntException::bigIntException(){
+	message="Not a valid integer";
 }
-
+bigIntException::bigIntException(string msg){
+	message=msg;
+}
+string bigIntException::what(){
+	return message;
+}
 bigInt::bigInt(){
 	integer="";
 }

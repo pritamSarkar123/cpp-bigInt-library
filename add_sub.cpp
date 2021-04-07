@@ -153,9 +153,10 @@ string bigInt::big_sum(string s1,string s2){
 		carry=ans/10;
 	}
 	if(carry) s.push_back(carry+'0');
-	if(both_negative) s.push_back('-');
 	reverse(s.begin(),s.end());
-	return s;
+	int i=0;
+	while(i<s.length() && s[i]=='0') i++;
+	return both_negative==true? "-"+s.substr(i,s.length()-i) : s.substr(i,s.length()-i);
 }
 
 string bigInt::helper_sub(string s1,string s2){
@@ -180,12 +181,16 @@ string bigInt::helper_sub(string s1,string s2){
 	}
 	for(int i=diff-1;i>=0;i--){
 		ans=(s1[i]-'0')-borrow;
+		if(ans<0){
+			ans+=10;
+			borrow=1;
+		}else{
+			borrow=0;
+		}
 		s.push_back(ans +'0');
-		borrow=0;
-	}
-	if(!s1_gt_s2){
-		s.push_back('-');
 	}
 	reverse(s.begin(),s.end());
-	return s;
+	int i=0;
+	while(i<s.length() && s[i]=='0') i++;
+	return s1_gt_s2!=true? "-"+s.substr(i,s.length()-i) : s.substr(i,s.length()-i);
 }
