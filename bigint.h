@@ -181,7 +181,7 @@ class bigInt{
 		bigInt big_gcd(int number);
 		bigInt big_gcd(long number);
 		bigInt big_gcd(long long number);
-
+		//--------------------------------------------------------------------------
 		bigInt big_lcm(bigInt another);
 		bigInt big_lcm(string input_string) throw (bigIntException);
 		bigInt big_lcm(int number);
@@ -215,12 +215,6 @@ class bigInt{
 		int big_signum();//Returns the signum function of this BigInteger.
 		bool big_test_bit(int n); //Returns true if and only if the designated bit is set.
 		vector<int> big_byte_array(); //Returns a byte array containing the two's-complement representation of this BigInteger.
-		//--------------------------------------------------------
-		bigInt big_divide(int number);
-		bigInt big_divide(string input_string);
-		bigInt big_divide(long number);
-		bigInt big_divide(long long number);
-		bigInt big_divide(bigInt another);
 		//------------------------------------------------------
 		static bigInt big_bitwise_not(bigInt b); //~b
 		static bigInt big_bitwise_and(bigInt b1,bigInt b2); // b1 & b2
