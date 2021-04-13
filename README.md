@@ -13,14 +13,14 @@ static string value(int number);<br />
 static string value(long number);<br />
 static string value(long long number);<br />
 //-------------------------------------------------------<br />
-static bool big_even (const bigInt &another);<br /> 
+static bool big_even (const bigInt &another);<br />
 static bool big_even (const string &input_string) throw (bigIntException);<br />
 static bool big_even (const int &number);<br />
 static bool big_even (const long &number);<br />
 static bool big_even (const long long &number);<br />
 static bool if_even(const string &s);<br />
 //---------------------------------------------------------------<br />
-bool operator > (const bigInt &another);<br /> 
+bool operator > (const bigInt &another);<br />
 bool operator > (const string &input_string) throw (bigIntException);<br />
 bool operator > (const int &number);<br />
 bool operator > (const long &number);<br />
@@ -87,17 +87,17 @@ void operator -= (long long number);<br />
 void operator -= (string input_string) throw (bigIntException);<br />
 void operator -= (bigInt another);<br />
 //------------------------------------------------------<br />
-bigInt operator * (int number);<br />
-bigInt operator * (long number);<br />
-bigInt operator * (long long number);<br />
-bigInt operator * (string input_string) throw (bigIntException);<br />
-bigInt operator * (bigInt another);<br />
+bigInt operator _ (int number);<br />
+bigInt operator _ (long number);<br />
+bigInt operator _ (long long number);<br />
+bigInt operator _ (string input_string) throw (bigIntException);<br />
+bigInt operator _ (bigInt another);<br />
 //-------------------------------------------------------------<br />
-void operator *= (int number);<br />
-void operator *= (long number);<br />
-void operator *= (long long number);<br />
-void operator *= (string input_string) throw (bigIntException);<br />
-void operator *= (bigInt another);<br />
+void operator _= (int number);<br />
+void operator _= (long number);<br />
+void operator _= (long long number);<br />
+void operator _= (string input_string) throw (bigIntException);<br />
+void operator _= (bigInt another);<br />
 //--------------------------------------------------------------------<br />
 //----------------------------------------------------------------------<br />
 static string big_div(string s1,string s2);<br />
@@ -113,7 +113,7 @@ void operator /= (int number) throw (bigIntException);<br />
 void operator /= (long number) throw (bigIntException);<br />
 void operator /= (long long number) throw (bigIntException);<br />
 void operator /= (string input_string) throw (bigIntException);<br />
-void operator /= (bigInt another) throw (bigIntException);<br />	
+void operator /= (bigInt another) throw (bigIntException);<br />
 //--------------------------------------------------------------<br />
 bigInt operator % (bigInt another) throw (bigIntException);<br />
 bigInt operator % (string input_string) throw (bigIntException);<br />
@@ -150,12 +150,12 @@ static bigInt big_factorial(bigInt another);<br />
 double toDouble(); // making the bigInt to double<br />
 float toFloat(); //making the bigint into float<br />
 int toInt();// bigInt to int<br />
-long toLong();//  bigInt to long<br />
+long toLong();// bigInt to long<br />
 long long toLongLong();// bigInt to long<br />
 //----------------------------------------------------------------<br />
-//TODO: remaining<br />
-//-------------------------------------------------------------------<br />
-//NEXT DAY<br />
+static string bigGcd(string s1,string s2);<br />
+static string bigLcm(string s1,string s2);<br />
+//----------------------------------------------------------------<br />
 bigInt big_gcd(bigInt another);<br />
 bigInt big_gcd(string input_string) throw (bigIntException);<br />
 bigInt big_gcd(int number);<br />
@@ -168,6 +168,10 @@ bigInt big_lcm(int number);<br />
 bigInt big_lcm(long number);<br />
 bigInt big_lcm(long long number);<br />
 //------------------------------------------------------------------------<br />
+//TODO: remaining<br />
+//-------------------------------------------------------------------<br />
+//NEXT DAY<br />
+//-----------------------------------------------------------------------<br />
 int hashCode();<br />
 int bit_length();<br />
 int bit_count();<br />
@@ -195,12 +199,12 @@ int getLowestSetBit();// returns the inde of the lowest set bit in the bigint<br
 int big_signum();//Returns the signum function of this BigInteger.<br />
 bool big_test_bit(int n); //Returns true if and only if the designated bit is set.<br />
 vector<int> big_byte_array(); //Returns a byte array containing the two's-complement representation of this BigInteger.<br />
-//----------------------------------------------------  <br />
-static bigInt big_bitwise_not(bigInt b); //~b  <br />
-static bigInt big_bitwise_and(bigInt b1,bigInt b2); // b1 & b2  <br />
-static bigInt big_bitwise_and_not(bigInt b1,bigInt b2); //b1 & ~b2  <br />
-static bigInt big_bitwise_or(bigInt b1,bigInt b2); // b1 | b2  <br />
-static bigInt big_bitwise_or_not(bigInt b1,bigInt b2); //b1 | ~b2  <br />
-static bigInt big_bitwise_xor(bigInt b1,bigInt b2); // b1 ^ b2  <br />
-static bigInt big_bitwise_xor_not(bigInt b1,bigInt b2); //b1 ^ ~b2  <br />
+//---------------------------------------------------- <br />
+static bigInt big_bitwise_not(bigInt b); //~b <br />
+static bigInt big_bitwise_and(bigInt b1,bigInt b2); // b1 & b2 <br />
+static bigInt big_bitwise_and_not(bigInt b1,bigInt b2); //b1 & ~b2 <br />
+static bigInt big_bitwise_or(bigInt b1,bigInt b2); // b1 | b2 <br />
+static bigInt big_bitwise_or_not(bigInt b1,bigInt b2); //b1 | ~b2 <br />
+static bigInt big_bitwise_xor(bigInt b1,bigInt b2); // b1 ^ b2 <br />
+static bigInt big_bitwise_xor_not(bigInt b1,bigInt b2); //b1 ^ ~b2 <br />
 //-----------------------------------------------<br />

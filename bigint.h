@@ -173,9 +173,10 @@ class bigInt{
 		long toLong();//  bigInt to long
 		long long toLongLong();// bigInt to long
 		//----------------------------------------------------------------
-		//TODO: remaining
 		//-------------------------------------------------------------------
-		//NEXT DAY
+		static string bigGcd(string s1,string s2);
+		static string bigLcm(string s1,string s2);
+		//------------------------------
 		bigInt big_gcd(bigInt another);
 		bigInt big_gcd(string input_string) throw (bigIntException);
 		bigInt big_gcd(int number);
@@ -188,6 +189,8 @@ class bigInt{
 		bigInt big_lcm(long number);
 		bigInt big_lcm(long long number);
 		//------------------------------------------------------------------------------
+		//TODO: remaining
+		//-----------------------------------------------------------
 		int hashCode();
 		int bit_length();
 		int bit_count();
