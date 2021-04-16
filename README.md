@@ -2,7 +2,7 @@ bigInt();<br />
 bigInt(int number);<br />
 bigInt(long number);<br />
 bigInt(long long number);<br />
-bigInt(string input_string) throw (bigIntException);<br />
+bigInt(string input*string) throw (bigIntException);<br />
 string get();<br />
 string big_abs();<br />
 bigInt operator ! ();<br />
@@ -87,7 +87,7 @@ void operator -= (long long number);<br />
 void operator -= (string input_string) throw (bigIntException);<br />
 void operator -= (bigInt another);<br />
 //------------------------------------------------------<br />
-bigInt operator _ (int number);<br />
+bigInt operator * (int number);<br />
 bigInt operator _ (long number);<br />
 bigInt operator _ (long long number);<br />
 bigInt operator _ (string input_string) throw (bigIntException);<br />
@@ -96,8 +96,8 @@ bigInt operator _ (bigInt another);<br />
 void operator _= (int number);<br />
 void operator _= (long number);<br />
 void operator _= (long long number);<br />
-void operator _= (string input_string) throw (bigIntException);<br />
-void operator _= (bigInt another);<br />
+void operator _= (string input*string) throw (bigIntException);<br />
+void operator *= (bigInt another);<br />
 //--------------------------------------------------------------------<br />
 //----------------------------------------------------------------------<br />
 static string big_div(string s1,string s2);<br />
@@ -169,6 +169,13 @@ bigInt big_lcm(long number);<br />
 bigInt big_lcm(long long number);<br />
 //------------------------------------------------------------------------<br />
 //TODO: remaining<br />
+//-----------------------------------------------------------------<br />
+bigInt big_root_by(int number);<br />
+bigInt big_root_by(long number);<br />
+bigInt big_root_by(long long number);<br />
+bigInt big_root_by(bigInt another);<br />
+bigInt big_root_by(string input_string) throw (bigIntException);<br />
+static string big_root(string a,string b);<br />
 //-------------------------------------------------------------------<br />
 //NEXT DAY<br />
 //-----------------------------------------------------------------------<br />

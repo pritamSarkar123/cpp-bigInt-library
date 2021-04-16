@@ -24,5 +24,12 @@ int main(){
 	cout<<"big factors"<<endl;
 	cout<<bigInt::big_factorial("100").get()<<"\n";
 	cout<<"nothing new added , only git from vs code is checked"<<endl;
+
+	cout<<bigInt::big_root("17","3")<<"\n";
+	cout<<bigInt::big_root("125","3")<<"\n";
+	cout<<bigInt::big_root("171","3")<<"\n";
+	cout<<bigInt::big_root("17","5")<<"\n";
+	cout<<bigInt::big_root("125","5")<<"\n";
+	cout<<bigInt::big_root("171","5")<<"\n";
 	return 0;
 }

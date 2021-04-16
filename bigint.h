@@ -188,6 +188,13 @@ class bigInt{
 		bigInt big_lcm(int number);
 		bigInt big_lcm(long number);
 		bigInt big_lcm(long long number);
+		//---------------------------------------------------
+		bigInt big_root_by(int number);
+		bigInt big_root_by(long number);
+		bigInt big_root_by(long long number);
+		bigInt big_root_by(bigInt another);
+		bigInt big_root_by(string input_string) throw (bigIntException);
+		static string big_root(string a,string b);
 		//------------------------------------------------------------------------------
 		//TODO: remaining
 		//-----------------------------------------------------------
