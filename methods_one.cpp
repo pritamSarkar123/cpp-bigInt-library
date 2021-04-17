@@ -23,9 +23,18 @@
 	//-----------------------------------------
 
 	string hashCode();
+	friend ostream & operator << (ostream &out, const bigInt &b);
+	friend istream & operator >> (istream &in,bigInt &b);
 
 */
-
+ostream & operator << (ostream &out, const bigInt &b){
+	out<<b.integer;
+	return out;
+}
+istream & operator >> (istream &in,bigInt &b){
+	in>>b.integer;
+	return in;
+}
 string bigInt::get(){
 	//returns the actual int string
 	return integer;

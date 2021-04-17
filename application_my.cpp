@@ -43,7 +43,10 @@ int main(){
 	// cout<<b1.hashCode()<<endl;
 	// cout<<b2.hashCode()<<endl;
 	bigInt b(11);
+	cout<<b<<endl;
 	b.bit_clear_and_update(3);
-	cout<<b.get()<<endl;
+	cout<<b<<endl;
+	cin>>b;
+	cout<<b<<endl;
 	return 0;
 }

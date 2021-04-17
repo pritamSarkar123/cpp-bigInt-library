@@ -8,6 +8,9 @@ string big_abs();<br />
 bigInt operator ! ();<br />
 void operator = (const bigInt &another);<br />
 //--------------------------------------------------------------<br />
+friend ostream & operator << (ostream &out, const bigInt &b);<br />
+friend istream & operator >> (istream &in,bigInt &b);<br />
+//--------------------------------------------------------------<br />
 static bool checkValidInt(string input_string);<br />
 static bool checkValidBin(string input_string);<br />
 static string value(int number);<br />

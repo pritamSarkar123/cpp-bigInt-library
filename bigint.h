@@ -29,6 +29,9 @@ class bigInt{
 		string big_abs();
 		bigInt operator ! ();
 		void operator = (const bigInt &another);
+		//----------------------------------------------------------------
+		friend ostream & operator << (ostream &out, const bigInt &b);
+		friend istream & operator >> (istream &in,bigInt &b);
 		//--------------------------------------------------------------
 		static bool checkValidInt(string input_string);
 		static bool checkValidBin(string input_string);
