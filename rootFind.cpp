@@ -25,6 +25,8 @@ bigInt bigInt::big_root_by(string input_string) throw (bigIntException){
     }else throw bigIntException();
 }
 string bigInt::big_root(string a,string b){
+	if(a[0]=='-') return "";
+	if(b[0]=='-') return big_power(a,b.substr(1,b.length()-1));
     string l="1";
     string h=big_div(a,b);
     while(big_compare(l,h)<=0){
