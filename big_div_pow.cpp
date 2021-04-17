@@ -40,10 +40,37 @@
 		bigInt big_pow(long number);
 		bigInt big_pow(long long number);
 		static string big_power(string s1,string s2);
+		//---------------------------------------------------------
+		static string big_mod_inv(string s1,string s2);
+		static string big_mod_power(string s1,string s2,string s3);
+		static string big_minimal_reminder(string s1,string s2);
+		//------------------------------------------------------------------
+		bigInt big_mod_inverse(bigInt another);
+		bigInt big_mod_inverse(string input_string) throw (bigIntException);
+		bigInt big_mod_inverse(int number);
+		bigInt big_mod_inverse(long number);
+		bigInt big_mod_inverse(long long number);
+		//---------------------------------------------------------------------------------------
+		bigInt big_mod_pow(bigInt exponent,bigInt another);
+		bigInt big_mod_pow(string exponent,string input_string) throw (bigIntException);
+		bigInt big_mod_pow(int exponent,int number);
+		bigInt big_mod_pow(long exponent,long number);
+		bigInt big_mod_pow(long long exponent,long long number);
+		//--------------------------------------------------------------------------
+		bigInt big_minimal_rem(int number);
+		bigInt big_minimal_rem(long number);
+		bigInt big_minimal_rem(long long number);
+		bigInt big_minimal_rem(string input_string) throw (bigIntException);
+		bigInt big_minimal_rem(bigInt another);
 */
 string bigInt::big_power(string s1,string s2){
 	if(s2=="0") return "1";
-	if(s2[0]=='-') return "0";
+	if(s2[0]=='-') return big_root(s1,s2.substr(1,s2.length()-1));
+	bool negative=false;
+	if(s1[0]=='-'){
+		s1=s1.substr(1,s1.length()-1);
+		if(!if_even(s2)) negative=true;
+	}
 	string result="1";
 	int count=0;
 	while(big_compare(s2,"0")>0){
@@ -56,6 +83,7 @@ string bigInt::big_power(string s1,string s2){
 		count++;
 		if(count>20) break;
 	}
+	if(negative) return '-'+result;
 	return result;
 }
 //----------------------------------------------------------------------
@@ -244,3 +272,98 @@ bigInt bigInt::big_pow(string input_string) throw (bigIntException){
 	}else throw bigIntException();
 }
 //----------------------------------------------------------------------
+/*
+static string big_mod_inv(string s1,string s2);
+static string big_minimal_reminder(string s1,string s2);
+static string big_mod_power(string s1,string s2,string s3);
+
+bigInt big_mod_inverse(bigInt another);
+bigInt big_mod_inverse(string input_string) throw (bigIntException);
+bigInt big_mod_inverse(int number);
+bigInt big_mod_inverse(long number);
+bigInt big_mod_inverse(long long number);
+//---------------------------------------------------------------------------------------
+bigInt big_mod_pow(bigInt exponent,bigInt another);
+bigInt big_mod_pow(string exponent,string input_string) throw (bigIntException);
+bigInt big_mod_pow(int exponent,int number);
+bigInt big_mod_pow(long exponent,long number);
+bigInt big_mod_pow(long long exponent,long long number);
+//--------------------------------------------------------------------------------------------
+bigInt big_minimal_rem(int number);
+bigInt big_minimal_rem(long number);
+bigInt big_minimal_rem(long long number);
+bigInt big_minimal_rem(string input_string) throw (bigIntException);
+bigInt big_minimal_rem(bigInt another);
+*/
+
+bigInt bigInt::big_mod_inverse(int number){
+	return bigInt(big_mod_inv(integer,to_string(number)));	
+}
+bigInt bigInt::big_mod_inverse(long number){
+	return bigInt(big_mod_inv(integer,to_string(number)));
+}
+bigInt bigInt::big_mod_inverse(long long number){
+	return bigInt(big_mod_inv(integer,to_string(number)));
+}
+bigInt bigInt::big_mod_inverse(bigInt another){
+	return bigInt(big_mod_inv(integer,another.integer));
+}
+bigInt bigInt::big_mod_inverse(string input_string) throw (bigIntException){
+	if(checkValidInt(input_string)){
+		return bigInt(big_mod_inv(integer,input_string));
+	}else throw bigIntException();
+}
+string bigInt::big_mod_inv(string s1,string s2){
+	string quotient=big_div(s1,s2);
+	quotient=big_sum(quotient,"1");
+	return big_sub(s1,quotient);
+}
+//-------------------------------------------------------------------------------------------
+string bigInt::big_mod_power(string s1,string s2,string s3){
+	string remainder=big_mod(s1,s2);
+	return big_power(remainder,s3);
+}
+bigInt bigInt::big_mod_pow(int exponent,int number){
+	return bigInt(big_mod_power(integer,to_string(number),to_string(exponent)));	
+}
+bigInt bigInt::big_mod_pow(long exponent,long number){
+	return bigInt(big_mod_power(integer,to_string(number),to_string(exponent)));
+}
+bigInt bigInt::big_mod_pow(long long exponent,long long number){
+	return bigInt(big_mod_power(integer,to_string(number),to_string(exponent)));
+}
+bigInt bigInt::big_mod_pow(bigInt exponent,bigInt another){
+	return bigInt(big_mod_power(integer,another.integer,exponent.integer));
+}
+bigInt bigInt::big_mod_pow(string exponent,string input_string) throw (bigIntException){
+	if(checkValidInt(input_string) && checkValidInt(exponent)){
+		return bigInt(big_mod_power(integer,input_string,exponent));
+	}else throw bigIntException();
+}
+//----------------------------------------------------------------------
+string bigInt::big_minimal_reminder(string s1,string s2){
+	string remainder= big_mod(s1,s2);
+	string half_s2=big_div(s2,"2");
+	if(big_compare(remainder,half_s2)==1){
+		return big_sub(remainder,s2);
+	}else{
+		return remainder;
+	}
+}
+bigInt bigInt::big_minimal_rem(int number){
+	return bigInt(big_minimal_reminder(integer,to_string(number)));	
+}
+bigInt bigInt::big_minimal_rem(long number){
+	return bigInt(big_minimal_reminder(integer,to_string(number)));
+}
+bigInt bigInt::big_minimal_rem(long long number){
+	return bigInt(big_minimal_reminder(integer,to_string(number)));
+}
+bigInt bigInt::big_minimal_rem(bigInt another){
+	return bigInt(big_minimal_reminder(integer,another.integer));
+}
+bigInt bigInt::big_minimal_rem(string input_string) throw (bigIntException){
+	if(checkValidInt(input_string)){
+		return bigInt(big_minimal_reminder(integer,input_string));
+	}else throw bigIntException();
+}

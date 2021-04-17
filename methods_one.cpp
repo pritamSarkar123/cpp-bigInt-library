@@ -22,6 +22,8 @@
 		static bool if_even(const string &s);
 	//-----------------------------------------
 
+	string hashCode();
+
 */
 
 string bigInt::get(){
@@ -32,6 +34,7 @@ string bigInt::big_abs(){
 	if(integer[0]=='-') return integer.substr(1,integer.length()-1); //1st one must be the sign
 	return integer;
 }
+
 bool bigInt::checkValidInt(string input_string){
 	//check whether the string of a valid integer or not
 	regex int_format("[+-]?[0-9]+");
@@ -47,7 +50,6 @@ string bigInt::value(long number){
 string bigInt::value(long long number){
 	return to_string(number);
 }
-
 // ~b1
 bigInt bigInt::operator ! (){
 	bigInt b;
@@ -129,4 +131,13 @@ bool bigInt::big_even (const string &input_string) throw (bigIntException){
 	if(checkValidInt(input_string)){
 		return if_even(input_string);
 	}else throw bigIntException();
+}
+string bigInt::hashCode(){
+	string hash="0";
+	long long i=0,len=integer.length();
+	while(i<len){
+		hash=big_sum(hash,big_mul(to_string(integer[0]-'0'),big_power("31",to_string(len-i))));
+		i++;
+	}
+	return hash;
 }

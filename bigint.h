@@ -31,6 +31,7 @@ class bigInt{
 		void operator = (const bigInt &another);
 		//--------------------------------------------------------------
 		static bool checkValidInt(string input_string);
+		static bool checkValidBin(string input_string);
 		static string value(int number);
 		static string value(long number);
 		static string value(long long number);
@@ -172,11 +173,10 @@ class bigInt{
 		int toInt();// bigInt to int
 		long toLong();//  bigInt to long
 		long long toLongLong();// bigInt to long
-		//----------------------------------------------------------------
 		//-------------------------------------------------------------------
 		static string bigGcd(string s1,string s2);
 		static string bigLcm(string s1,string s2);
-		//------------------------------
+		//-----------------------------------------------------------------------
 		bigInt big_gcd(bigInt another);
 		bigInt big_gcd(string input_string) throw (bigIntException);
 		bigInt big_gcd(int number);
@@ -196,27 +196,65 @@ class bigInt{
 		bigInt big_root_by(string input_string) throw (bigIntException);
 		static string big_root(string a,string b);
 		//------------------------------------------------------------------------------
-		//TODO: remaining
-		//-----------------------------------------------------------
-		int hashCode();
-		int bit_length();
-		int bit_count();
-		bool primeProbability(int certainly);
-		//-------------------------------------------------------------------------------
-		string bit_clear(int position);
+		static string toBinary(int number);
+		static string toBinary(long number);
+		static string toBinary(long long number);
+		static string toBinary(string input_string) throw (bigIntException);
+		static string toBinary(bigInt another);
+		static string toDecimal(int number) throw (bigIntException);
+		static string toDecimal(long number) throw (bigIntException);
+		static string toDecimal(long long number) throw (bigIntException);
+		static string toDecimal(string input_string) throw (bigIntException);
+		static string toDecimal(bigInt another) throw (bigIntException);
+		static string bigIntToBinary(string s);
+		static string binaryToBigInt(string s);
+		//----------------------------------------------------------------------------
+		string hashCode();
+		long long bit_length();
+		long long bit_count(char x);
+		//-----------------------------------------------------------------------------------
+		bigInt bit_clear(int position);
+		bigInt bit_clear(long position);
+		bigInt bit_clear(long long position);
 		bigInt bit_flip(int position);
-		//----------------------------------------------------------------------------------
+		bigInt bit_flip(long position);
+		bigInt bit_flip(long long position);
+		void bit_clear_and_update(int position);
+		void bit_clear_and_update(long position);
+		void bit_clear_and_update(long long position);
+		void bit_flip_and_update(int position);
+		void bit_flip_and_update(long position);
+		void bit_flip_and_update(long long position);
+		bigInt clear_bit(long long position);
+		bigInt flip_bit(long long position);
+		//---------------------------------------------------------------------------------------
+		static string big_mod_inv(string s1,string s2);
+		static string big_mod_power(string s1,string s2,string s3);
+		static string big_minimal_reminder(string s1,string s2);
+		//---------------------------------------------------------------------
 		bigInt big_mod_inverse(bigInt another);
-		bigInt big_mod_inverse(string input_string);
+		bigInt big_mod_inverse(string input_string) throw (bigIntException);
 		bigInt big_mod_inverse(int number);
 		bigInt big_mod_inverse(long number);
 		bigInt big_mod_inverse(long long number);
 		//---------------------------------------------------------------------------------------
 		bigInt big_mod_pow(bigInt exponent,bigInt another);
-		bigInt big_mod_pow(string exponent,string input_string);
+		bigInt big_mod_pow(string exponent,string input_string) throw (bigIntException);
 		bigInt big_mod_pow(int exponent,int number);
 		bigInt big_mod_pow(long exponent,long number);
 		bigInt big_mod_pow(long long exponent,long long number);
+		//-----------------------------------------------------------------------------------
+		bigInt big_minimal_rem(int number);
+		bigInt big_minimal_rem(long number);
+		bigInt big_minimal_rem(long long number);
+		bigInt big_minimal_rem(string input_string) throw (bigIntException);
+		bigInt big_minimal_rem(bigInt another);
+		//-------------------------------------------------------------------------------------
+		//TODO: remaining
+		bool primeProbability(int certainly);
+		//----------------
+		// implement minimal remainder
+		//--------------------------------------------------------------------------
 		//-----------------------------------------------------------------------------------------
 		bigInt big_set_bit(int n);//Returns a BigInteger whose value is equivalent to this BigInteger with the designated bit set.
 		bigInt big_shift_left(int n);
@@ -225,7 +263,7 @@ class bigInt{
 		int big_signum();//Returns the signum function of this BigInteger.
 		bool big_test_bit(int n); //Returns true if and only if the designated bit is set.
 		vector<int> big_byte_array(); //Returns a byte array containing the two's-complement representation of this BigInteger.
-		//------------------------------------------------------
+		//-----------------------------------------------------------------------------------
 		static bigInt big_bitwise_not(bigInt b); //~b
 		static bigInt big_bitwise_and(bigInt b1,bigInt b2); // b1 & b2
 		static bigInt big_bitwise_and_not(bigInt b1,bigInt b2); //b1 & ~b2

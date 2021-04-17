@@ -9,6 +9,7 @@ bigInt operator ! ();<br />
 void operator = (const bigInt &another);<br />
 //--------------------------------------------------------------<br />
 static bool checkValidInt(string input_string);<br />
+static bool checkValidBin(string input_string);<br />
 static string value(int number);<br />
 static string value(long number);<br />
 static string value(long long number);<br />
@@ -168,7 +169,6 @@ bigInt big_lcm(int number);<br />
 bigInt big_lcm(long number);<br />
 bigInt big_lcm(long long number);<br />
 //------------------------------------------------------------------------<br />
-//TODO: remaining<br />
 //-----------------------------------------------------------------<br />
 bigInt big_root_by(int number);<br />
 bigInt big_root_by(long number);<br />
@@ -177,28 +177,64 @@ bigInt big_root_by(bigInt another);<br />
 bigInt big_root_by(string input_string) throw (bigIntException);<br />
 static string big_root(string a,string b);<br />
 //-------------------------------------------------------------------<br />
-//NEXT DAY<br />
+static string toBinary(int number);<br />
+static string toBinary(long number);<br />
+static string toBinary(long long number);<br />
+static string toBinary(string input_string) throw (bigIntException);<br />
+static string toBinary(bigInt another);<br />
+static string toDecimal(int number) throw (bigIntException);<br />
+static string toDecimal(long number) throw (bigIntException);<br />
+static string toDecimal(long long number) throw (bigIntException);<br />
+static string toDecimal(string input_string) throw (bigIntException);<br />
+static string toDecimal(bigInt another) throw (bigIntException);<br />
+static bigInt bigIntToBinary(string s);<br />
+static bigInt binaryToBigInt(string s);<br />
 //-----------------------------------------------------------------------<br />
-int hashCode();<br />
-int bit_length();<br />
-int bit_count();<br />
-bool primeProbability(int certainly);<br />
-//----------------------------------<br />
-string bit_clear(int position);<br />
+string hashCode();<br />
+long long bit_length();<br />
+long long bit_count(char x);<br />
+//--------------------------------	----------------<br />
+bigInt bit_clear(int position);<br />
+bigInt bit_clear(long position);<br />
+bigInt bit_clear(long long position);<br />
 bigInt bit_flip(int position);<br />
+bigInt bit_flip(long position);<br />
+bigInt bit_flip(long long position);<br />
+void bit_clear_and_update(int position);<br />
+void bit_clear_and_update(long position);<br />
+void bit_clear_and_update(long long position);<br />
+void bit_flip_and_update(int position);<br />
+void bit_flip_and_update(long position);<br />
+void bit_flip_and_update(long long position);<br />
+bigInt clear_bit(long long position);<br />
+bigInt flip_bit(long long position);<br />
+//-----------------------------------------------------------------------<br />
+//TODO: remaining<br />
+//--------------------------------------------------------------<br />
+bool primeProbability(int certainly);<br />
 //------------------------------------<br />
+static string big_mod_inv(string s1,string s2);
+static string big_mod_power(string s1,string s2,string s3);
+static string big_minimal_reminder(string s1,string s2);
+//----------------------------------------------------------------------<br />
 bigInt big_mod_inverse(bigInt another);<br />
-bigInt big_mod_inverse(string input_string);<br />
+bigInt big_mod_inverse(string input_string) throw (bigIntException);<br />
 bigInt big_mod_inverse(int number);<br />
 bigInt big_mod_inverse(long number);<br />
 bigInt big_mod_inverse(long long number);<br />
 //-----------------------------------------<br />
 bigInt big_mod_pow(bigInt exponent,bigInt another);<br />
-bigInt big_mod_pow(string exponent,string input_string);<br />
+bigInt big_mod_pow(string exponent,string input_string) throw (bigIntException);<br />
 bigInt big_mod_pow(int exponent,int number);<br />
 bigInt big_mod_pow(long exponent,long number);<br />
 bigInt big_mod_pow(long long exponent,long long number);<br />
 //---------------------------------------<br />
+bigInt big_minimal_rem(int number);<br />
+bigInt big_minimal_rem(long number);<br />
+bigInt big_minimal_rem(long long number);<br />
+bigInt big_minimal_rem(string input_string) throw (bigIntException);<br />
+bigInt big_minimal_rem(bigInt another);<br />
+//---------------------------------------------<br />
 bigInt big_set_bit(int n);//Returns a BigInteger whose value is equivalent to this BigInteger with the designated bit set.<br />
 bigInt big_shift_left(int n);<br />
 bigInt big_shift_right(int n);<br />
@@ -207,6 +243,7 @@ int big_signum();//Returns the signum function of this BigInteger.<br />
 bool big_test_bit(int n); //Returns true if and only if the designated bit is set.<br />
 vector<int> big_byte_array(); //Returns a byte array containing the two's-complement representation of this BigInteger.<br />
 //---------------------------------------------------- <br />
+//-------------------------------------------------------------<br />
 static bigInt big_bitwise_not(bigInt b); //~b <br />
 static bigInt big_bitwise_and(bigInt b1,bigInt b2); // b1 & b2 <br />
 static bigInt big_bitwise_and_not(bigInt b1,bigInt b2); //b1 & ~b2 <br />
