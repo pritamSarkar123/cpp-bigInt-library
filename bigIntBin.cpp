@@ -57,20 +57,8 @@ bigInt bigInt::clear_bit(long long position){
 		return bigInt(integer);
 	}
 }
-bigInt bigInt::bit_clear(int position){
-	return clear_bit(position);
-}
-bigInt bigInt::bit_clear(long position){
-	return clear_bit(position);
-}
 bigInt bigInt::bit_clear(long long position){
 	return clear_bit(position);
-}
-void bigInt::bit_clear_and_update(int position){
-	integer=clear_bit(position).integer;
-}
-void bigInt::bit_clear_and_update(long position){
-	integer=clear_bit(position).integer;
 }
 void bigInt::bit_clear_and_update(long long position){
 	integer=clear_bit(position).integer;
@@ -97,20 +85,8 @@ bigInt bigInt::flip_bit(long long position){
 		return bigInt(integer);
 	}
 }
-bigInt bigInt::bit_flip(int position){
-	return flip_bit(position);
-}
-bigInt bigInt::bit_flip(long position){
-	return flip_bit(position);
-}
 bigInt bigInt::bit_flip(long long position){
 	return flip_bit(position);
-}
-void bigInt::bit_flip_and_update(int position){
-	integer=flip_bit(position).integer;
-}
-void bigInt::bit_flip_and_update(long position){
-	integer=flip_bit(position).integer;
 }
 void bigInt::bit_flip_and_update(long long position){
 	integer=flip_bit(position).integer;
@@ -132,13 +108,6 @@ long long bigInt::bit_count(char x){
 	}
 	return count;
 }
-
-string bigInt::toBinary(int number){
-	return bigIntToBinary(to_string(number));
-}
-string bigInt::toBinary(long number){
-	return bigIntToBinary(to_string(number));
-}
 string bigInt::toBinary(long long number){
 	return bigIntToBinary(to_string(number));
 }
@@ -151,16 +120,6 @@ string bigInt::toBinary(const bigInt another){
 	return bigIntToBinary(another.integer);
 }
 //-------------------------------------------------------------------------
-string bigInt::toDecimal(int number) throw (bigIntException){
-	if(checkValidBin(to_string(number))){
-		return bigIntToBinary(to_string(number));
-	}else throw bigIntException("Not a valid binary string");
-}
-string bigInt::toDecimal(long number) throw (bigIntException){
-	if(checkValidBin(to_string(number))){
-		return bigIntToBinary(to_string(number));
-	}else throw bigIntException("Not a valid binary string");
-}
 string bigInt::toDecimal(long long number) throw (bigIntException){
 	if(checkValidBin(to_string(number))){
 		return bigIntToBinary(to_string(number));

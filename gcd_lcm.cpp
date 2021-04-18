@@ -5,24 +5,14 @@
         //-------------------------------------------------------------
         bigInt big_gcd(bigInt another);
 		bigInt big_gcd(string input_string) throw (bigIntException);
-		bigInt big_gcd(int number);
-		bigInt big_gcd(long number);
 		bigInt big_gcd(long long number);
 		//--------------------------------------------------------------------------
 		bigInt big_lcm(bigInt another);
 		bigInt big_lcm(string input_string) throw (bigIntException);
-		bigInt big_lcm(int number);
-		bigInt big_lcm(long number);
 		bigInt big_lcm(long long number);
 */
 bigInt bigInt::big_gcd(bigInt another){
     return bigInt(bigGcd(integer,another.integer));
-}
-bigInt bigInt::big_gcd(int number){
-    return bigInt(bigGcd(integer,to_string(number)));
-}
-bigInt bigInt::big_gcd(long number){
-    return bigInt(bigGcd(integer,to_string(number)));
 }
 bigInt bigInt::big_gcd(long long number){
     return bigInt(bigGcd(integer,to_string(number)));
@@ -35,12 +25,6 @@ bigInt bigInt::big_gcd(string input_string) throw (bigIntException){
 //--------------------------------------------------------------------
 bigInt bigInt::big_lcm(bigInt another){
     return bigInt(bigLcm(integer,another.integer));
-}
-bigInt bigInt::big_lcm(int number){
-    return bigInt(bigLcm(integer,to_string(number)));
-}
-bigInt bigInt::big_lcm(long number){
-    return bigInt(bigLcm(integer,to_string(number)));
 }
 bigInt bigInt::big_lcm(long long number){
     return bigInt(bigLcm(integer,to_string(number)));

@@ -4,40 +4,28 @@
 		static string big_div(string s1,string s2);
 		static string big_mod(string s1,string s2);
 
-		bigInt operator / (int number) throw (bigIntException);
 		bigInt operator / (string input_string) throw (bigIntException);
-		bigInt operator / (long number) throw (bigIntException);
 		bigInt operator / (long long number) throw (bigIntException);
 		bigInt operator / (bigInt another) throw (bigIntException);
 
-		void operator /= (int number) throw (bigIntException);
-		void operator /= (long number) throw (bigIntException);
 		void operator /= (long long number) throw (bigIntException);
 		void operator /= (string input_string) throw (bigIntException);
 		void operator /= (bigInt another throw (bigIntException));	
 
 		bigInt operator % (bigInt another) throw (bigIntException);
 		bigInt operator % (string input_string) throw (bigIntException);
-		bigInt operator % (int number) throw (bigIntException);
-		bigInt operator % (long number) throw (bigIntException);
 		bigInt operator % (long long number) throw (bigIntException);
 		
 		void operator %= (bigInt another) throw (bigIntException);
 		void operator %= (string input_string) throw (bigIntException);
-		void operator %= (int number) throw (bigIntException);
-		void operator %= (long number) throw (bigIntException);
 		void operator %= (long long number) throw (bigIntException);
 
-		vector<bigInt> big_divide_and_remainder(int number) throw (bigIntException);
 		vector<bigInt> big_divide_and_remainder(string input_string) throw (bigIntException);
-		vector<bigInt> big_divide_and_remainder(long number) throw (bigIntException);
 		vector<bigInt> big_divide_and_remainder(bigInt another) throw (bigIntException);
 		vector<bigInt> big_divide_and_remainder(long long number) throw (bigIntException);
 
 		bigInt big_pow(bigInt another);
 		bigInt big_pow(string input_string) throw (bigIntException);
-		bigInt big_pow(int number);
-		bigInt big_pow(long number);
 		bigInt big_pow(long long number);
 		static string big_power(string s1,string s2);
 		//---------------------------------------------------------
@@ -47,18 +35,12 @@
 		//------------------------------------------------------------------
 		bigInt big_mod_inverse(bigInt another);
 		bigInt big_mod_inverse(string input_string) throw (bigIntException);
-		bigInt big_mod_inverse(int number);
-		bigInt big_mod_inverse(long number);
 		bigInt big_mod_inverse(long long number);
 		//---------------------------------------------------------------------------------------
 		bigInt big_mod_pow(bigInt exponent,bigInt another);
 		bigInt big_mod_pow(string exponent,string input_string) throw (bigIntException);
-		bigInt big_mod_pow(int exponent,int number);
-		bigInt big_mod_pow(long exponent,long number);
 		bigInt big_mod_pow(long long exponent,long long number);
 		//--------------------------------------------------------------------------
-		bigInt big_minimal_rem(int number);
-		bigInt big_minimal_rem(long number);
 		bigInt big_minimal_rem(long long number);
 		bigInt big_minimal_rem(string input_string) throw (bigIntException);
 		bigInt big_minimal_rem(bigInt another);
@@ -113,14 +95,6 @@ string bigInt::big_mod(string s1,string s2){
 	return big_sub(s1,ans);
 }
 //-----------------------------------------------------------------------------------
-bigInt bigInt::operator / (int number) throw (bigIntException){
-	if(!number) throw bigIntException("division by zero");
-	return bigInt(big_div(integer,to_string(number)));
-}
-bigInt bigInt::operator / (long number) throw (bigIntException){
-	if(!number) throw bigIntException("division by zero");
-	return bigInt(big_div(integer,to_string(number)));
-}
 bigInt bigInt::operator / (long long number) throw (bigIntException){
 	if(!number) throw bigIntException("division by zero");
 	return bigInt(big_div(integer,to_string(number)));
@@ -136,14 +110,6 @@ bigInt bigInt::operator / (string input_string) throw (bigIntException){
 	}else throw bigIntException();
 }
 //------------------------------------------------------------------------------------
-void bigInt::operator /= (int number) throw (bigIntException){
-	if(!number) throw bigIntException("division by zero");
-	integer=big_div(integer,to_string(number));
-}
-void bigInt::operator /= (long number) throw (bigIntException){
-	if(!number) throw bigIntException("division by zero");
-	integer=big_div(integer,to_string(number));
-}
 void bigInt::operator /= (long long number) throw (bigIntException){
 	if(!number) throw bigIntException("division by zero");
 	integer=big_div(integer,to_string(number));
@@ -159,14 +125,6 @@ void bigInt::operator /= (string input_string) throw (bigIntException){
 	}else throw bigIntException();
 }
 //-----------------------------------------------------------------------------------
-bigInt bigInt::operator % (int number) throw (bigIntException){
-	if(!number) throw bigIntException("division by zero");
-	return bigInt(big_mod(integer,to_string(number)));
-}
-bigInt bigInt::operator % (long number) throw (bigIntException){
-	if(!number) throw bigIntException("division by zero");
-	return bigInt(big_mod(integer,to_string(number)));
-}
 bigInt bigInt::operator % (long long number) throw (bigIntException){
 	if(!number) throw bigIntException("division by zero");
 	return bigInt(big_mod(integer,to_string(number)));
@@ -182,14 +140,6 @@ bigInt bigInt::operator % (string input_string) throw (bigIntException){
 	}else throw bigIntException();
 }
 //------------------------------------------------------------------------------------
-void bigInt::operator %= (int number) throw (bigIntException){
-	if(!number) throw bigIntException("division by zero");
-	integer=big_mod(integer,to_string(number));
-}
-void bigInt::operator %= (long number) throw (bigIntException){
-	if(!number) throw bigIntException("division by zero");
-	integer=big_mod(integer,to_string(number));
-}
 void bigInt::operator %= (long long number) throw (bigIntException){
 	if(!number) throw bigIntException("division by zero");
 	integer=big_mod(integer,to_string(number));
@@ -205,24 +155,6 @@ void bigInt::operator %= (string input_string) throw (bigIntException){
 	}else throw bigIntException();
 }
 //--------------------------------------------------------------------------------
-vector<bigInt> bigInt::big_divide_and_remainder(int number) throw (bigIntException){
-	if(!number) throw bigIntException("division by zero");
-	vector<bigInt> ans;
-	string quotient = big_div(integer,to_string(number));
-	string remainder = big_mod(integer,to_string(number));
-	ans.push_back(quotient);
-	ans.push_back(remainder);
-	return ans;
-}
-vector<bigInt> bigInt::big_divide_and_remainder(long number) throw (bigIntException){
-	if(!number) throw bigIntException("division by zero");
-	vector<bigInt> ans;
-	string quotient = big_div(integer,to_string(number));
-	string remainder = big_mod(integer,to_string(number));
-	ans.push_back(quotient);
-	ans.push_back(remainder);
-	return ans;
-}
 vector<bigInt> bigInt::big_divide_and_remainder(long long number) throw (bigIntException){
 	if(!number) throw bigIntException("division by zero");
 	vector<bigInt> ans;
@@ -254,15 +186,6 @@ vector<bigInt> bigInt::big_divide_and_remainder(string input_string) throw (bigI
 	}else throw bigIntException();
 }
 //-------------------------------------------------------------------------------------
-bigInt bigInt::big_pow(bigInt another){
-	return bigInt(big_power(integer,another.integer));
-}
-bigInt bigInt::big_pow(int number){
-	return bigInt(big_power(integer,to_string(number)));
-}
-bigInt bigInt::big_pow(long number){
-	return bigInt(big_power(integer,to_string(number)));
-}
 bigInt bigInt::big_pow(long long number){
 	return bigInt(big_power(integer,to_string(number)));
 }
@@ -271,37 +194,10 @@ bigInt bigInt::big_pow(string input_string) throw (bigIntException){
 		return bigInt(big_power(integer,input_string));
 	}else throw bigIntException();
 }
+bigInt bigInt::big_pow(bigInt another){
+	return bigInt(big_power(integer,another.integer));
+}
 //----------------------------------------------------------------------
-/*
-static string big_mod_inv(string s1,string s2);
-static string big_minimal_reminder(string s1,string s2);
-static string big_mod_power(string s1,string s2,string s3);
-
-bigInt big_mod_inverse(bigInt another);
-bigInt big_mod_inverse(string input_string) throw (bigIntException);
-bigInt big_mod_inverse(int number);
-bigInt big_mod_inverse(long number);
-bigInt big_mod_inverse(long long number);
-//---------------------------------------------------------------------------------------
-bigInt big_mod_pow(bigInt exponent,bigInt another);
-bigInt big_mod_pow(string exponent,string input_string) throw (bigIntException);
-bigInt big_mod_pow(int exponent,int number);
-bigInt big_mod_pow(long exponent,long number);
-bigInt big_mod_pow(long long exponent,long long number);
-//--------------------------------------------------------------------------------------------
-bigInt big_minimal_rem(int number);
-bigInt big_minimal_rem(long number);
-bigInt big_minimal_rem(long long number);
-bigInt big_minimal_rem(string input_string) throw (bigIntException);
-bigInt big_minimal_rem(bigInt another);
-*/
-
-bigInt bigInt::big_mod_inverse(int number){
-	return bigInt(big_mod_inv(integer,to_string(number)));	
-}
-bigInt bigInt::big_mod_inverse(long number){
-	return bigInt(big_mod_inv(integer,to_string(number)));
-}
 bigInt bigInt::big_mod_inverse(long long number){
 	return bigInt(big_mod_inv(integer,to_string(number)));
 }
@@ -323,12 +219,6 @@ string bigInt::big_mod_power(string s1,string s2,string s3){
 	string remainder=big_mod(s1,s2);
 	return big_power(remainder,s3);
 }
-bigInt bigInt::big_mod_pow(int exponent,int number){
-	return bigInt(big_mod_power(integer,to_string(number),to_string(exponent)));	
-}
-bigInt bigInt::big_mod_pow(long exponent,long number){
-	return bigInt(big_mod_power(integer,to_string(number),to_string(exponent)));
-}
 bigInt bigInt::big_mod_pow(long long exponent,long long number){
 	return bigInt(big_mod_power(integer,to_string(number),to_string(exponent)));
 }
@@ -349,12 +239,6 @@ string bigInt::big_minimal_reminder(string s1,string s2){
 	}else{
 		return remainder;
 	}
-}
-bigInt bigInt::big_minimal_rem(int number){
-	return bigInt(big_minimal_reminder(integer,to_string(number)));	
-}
-bigInt bigInt::big_minimal_rem(long number){
-	return bigInt(big_minimal_reminder(integer,to_string(number)));
 }
 bigInt bigInt::big_minimal_rem(long long number){
 	return bigInt(big_minimal_reminder(integer,to_string(number)));

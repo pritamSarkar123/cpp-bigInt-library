@@ -1,14 +1,10 @@
 #include "bigInt.h"
 /*
 	
-		bigInt operator - (int number);
-		bigInt operator - (long number);
 		bigInt operator - (long long number);
 		bigInt operator - (string input_string) throw (bigIntException);
 		bigInt operator - (bigInt another);
 		//----------------------------------------------------------
-		bigInt operator + (int number);
-		bigInt operator + (long number);
 		bigInt operator + (long long number);
 		bigInt operator + (string input_string) throw (bigIntException);
 		bigInt operator + (bigInt another);
@@ -16,14 +12,10 @@
 		void operator ++ ();
 		void operator -- ();
 		//---------------------------------------------
-		void operator += (int number);
-		void operator += (long number);
 		void operator += (long long number);
 		void operator += (string input_string) throw (bigIntException);
 		void operator += (bigInt another);
 		//------------------------------------------------------
-		void operator -= (int number);
-		void operator -= (long number);
 		void operator -= (long long number);
 		void operator -= (string input_string) throw (bigIntException);
 		void operator -= (bigInt another);
@@ -32,12 +24,6 @@
 		static string big_sub(string s1,string s2);
 		static string big_sum(string s1,string s2);
 */
-bigInt bigInt:: operator - (int number){
-	return bigInt(big_sub(integer,to_string(number)));
-}
-bigInt bigInt:: operator - (long number){
-	return bigInt(big_sub(integer,to_string(number)));
-}
 bigInt bigInt:: operator - (long long number){
 	return bigInt(big_sub(integer,to_string(number)));
 }
@@ -50,12 +36,6 @@ bigInt bigInt:: operator - (string input_string) throw(bigIntException){
 	else throw bigIntException();
 }
 //-------------------------------------------------------
-bigInt bigInt:: operator + (int number){
-	return bigInt(big_sum(integer,to_string(number)));
-}
-bigInt bigInt:: operator + (long number){
-	return bigInt(big_sum(integer,to_string(number)));
-}
 bigInt bigInt:: operator + (long long number){
 	return bigInt(big_sum(integer,to_string(number)));
 }
@@ -71,12 +51,6 @@ bigInt bigInt:: operator + (string input_string) throw(bigIntException){
 void bigInt:: operator ++ (){
 	integer = big_sum(integer,"1"); 
 }
-void bigInt:: operator += (int number){
-	integer = big_sum(integer,to_string(number)); 
-}
-void bigInt:: operator += (long number){
-	integer = big_sum(integer,to_string(number)); 
-}
 void bigInt:: operator += (long long number){
 	integer = big_sum(integer,to_string(number)); 
 }
@@ -91,12 +65,6 @@ void bigInt:: operator += (string input_string) throw (bigIntException){
 //---------------------------------------------------------------
 void bigInt:: operator -- (){
 	integer = big_sub(integer,"1"); 
-}
-void bigInt:: operator -= (int number){
-	integer = big_sub(integer,to_string(number)); 
-}
-void bigInt:: operator -= (long number){
-	integer = big_sub(integer,to_string(number)); 
 }
 void bigInt:: operator -= (long long number){
 	integer = big_sub(integer,to_string(number)); 

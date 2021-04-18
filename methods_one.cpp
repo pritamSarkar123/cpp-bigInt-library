@@ -16,8 +16,6 @@
 	//-----------------------------------------
 		static bool big_even (const bigInt &another); 
 		static bool big_even (const string &input_string) throw (bigIntException);
-		static bool big_even (const int &number);
-		static bool big_even (const long &number);
 		static bool big_even (const long long &number);
 		static bool if_even(const string &s);
 	//-----------------------------------------
@@ -49,12 +47,6 @@ bool bigInt::checkValidInt(string input_string){
 	regex int_format("[+-]?[0-9]+");
 	if(regex_match(input_string,int_format)) return true;
 	else return false;
-}
-string bigInt::value(int number){
-	return to_string(number);
-}
-string bigInt::value(long number){
-	return to_string(number);
 }
 string bigInt::value(long long number){
 	return to_string(number);
@@ -123,12 +115,6 @@ long long bigInt::toLongLong(){
 
 bool bigInt::if_even(const string &s){
 	return ((s[s.length()-1] - '0') & 1)==0 ? true : false;
-}
-bool bigInt::big_even (const int &number){
-	return if_even(to_string(number));
-}
-bool bigInt::big_even (const long &number){
-	return if_even(to_string(number));
 }
 bool bigInt::big_even (const long long &number){
 	return if_even(to_string(number));

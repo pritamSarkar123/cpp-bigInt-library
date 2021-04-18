@@ -1,18 +1,10 @@
 #include "bigInt.h"
 /*
-    bigInt big_root_by(int number);
-    bigInt big_root_by(long number);
     bigInt big_root_by(long long number);
     bigInt big_root_by(bigInt another);
     bigInt big_root_by(string input_string) throw (bigIntException);
     static string big_root(string a,string b);
 */
-bigInt bigInt::big_root_by(int number){
-    return bigInt(big_root(integer,to_string(number)));
-}
-bigInt bigInt::big_root_by(long number){
-    return bigInt(big_root(integer,to_string(number)));
-}
 bigInt bigInt::big_root_by(long long  number){
     return bigInt(big_root(integer,to_string(number)));
 }

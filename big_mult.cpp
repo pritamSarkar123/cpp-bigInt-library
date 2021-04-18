@@ -1,37 +1,22 @@
 #include "bigInt.h"
 /*
 		
-		bigInt operator * (int number);
-		bigInt operator * (long number);
 		bigInt operator * (long long number);
 		bigInt operator * (string input_string) throw (bigIntException);
 		bigInt operator * (bigInt another);
 
-
-		void operator *= (int number);
-		void operator *= (long number);
 		void operator *= (long long number);
 		void operator *= (string input_string) throw (bigIntException);
 		void operator *= (bigInt another);	
 
 		static string big_mul(string s1, string s2);
 	
-*/
-/*
-		static bigInt big_factorial(const int &number);
-		static bigInt big_factorial(const long &number);
 		static bigInt big_factorial(const long long &number);
 		static bigInt big_factorial(const string &input_string) throw (bigIntException);
 		static bigInt big_factorial(const bigInt &another);
 		static string big_fact(const string &s1);
 
 */
-bigInt bigInt:: operator * (int number){
-	return bigInt(big_mul(integer,to_string(number)));
-}
-bigInt bigInt:: operator * (long number){
-	return bigInt(big_mul(integer,to_string(number)));
-}
 bigInt bigInt:: operator * (long long number){
 	return bigInt(big_mul(integer,to_string(number)));
 }
@@ -46,12 +31,6 @@ bigInt bigInt:: operator * (string input_string) throw (bigIntException){
 	}
 }
 //---------------------------------------------------------------------
-void bigInt:: operator *= (int number){
-	integer = big_mul(integer,to_string(number));
-}
-void bigInt:: operator *= (long number){
-	integer = big_mul(integer,to_string(number));
-}
 void bigInt:: operator *= (long long number){
 	integer = big_mul(integer,to_string(number));
 }
@@ -105,12 +84,6 @@ string bigInt::big_fact(const string &s1){
 	s=big_mul(s,s2);
 	s2=big_sum(s2,"1");
 	return s;
-}
-bigInt bigInt::big_factorial(const int &number){
-	return bigInt(big_fact(to_string(number)));
-}
-bigInt bigInt::big_factorial(const long &number){
-	return bigInt(big_fact(to_string(number)));
 }
 bigInt bigInt::big_factorial(const long long &number){
 	return bigInt(big_fact(to_string(number)));

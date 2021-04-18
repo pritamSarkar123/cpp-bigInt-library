@@ -11,12 +11,6 @@ string bigIntException::what(){
 bigInt::bigInt(){
 	integer="";
 }
-bigInt::bigInt(int number){
-	integer=to_string(number);
-	}
-bigInt::bigInt(long number){
-	integer=to_string(number);
-}
 bigInt::bigInt(long long number){
 	integer=to_string(number);
 }

@@ -2,36 +2,26 @@
 /*
 	bool operator > (const bigInt &another); 
 	bool operator > (const string &input_string) throw (bigIntException);
-	bool operator > (const int &number);
-	bool operator > (const long &number);
 	bool operator > (const long long &number);
 
 
 	bool operator < (const bigInt &another); 
 	bool operator < (const string &input_string) throw (bigIntException);
-	bool operator < (const int &number);
-	bool operator < (const long &number);
 	bool operator < (const long long &number);
 
 	static int big_compare(const string &s1,const string &s2);
 	//-------------------------------------------------
 	bool operator == (const bigInt &another);
 	bool operator == (const string &input_string) throw (bigIntException);
-	bool operator == (const int &number);
-	bool operator == (const long &number);
 	bool operator == (const long long &number);
 
 	//-------------------------------
 	bigInt big_max(const bigInt &another);
 	bigInt big_max(const string &input_string) throw (bigIntException);
-	bigInt big_max(const int &number);
-	bigInt big_max(const long &number);
 	bigInt big_max(const long long &number);
 	//-----------------------------------
 	bigInt big_min(const bigInt &another);
 	bigInt big_min(const string &input_string) throw (bigIntException);
-	bigInt big_min(const int &number);
-	bigInt big_min(const long &number);
 	bigInt big_min(const long long &number);
 	//------------------------------------------------
 	static bigInt big_min(const vector<bigInt> &v);
@@ -43,12 +33,6 @@
 	s1 == s2 return 0  then is_equal true
 */
 
-bigInt bigInt::big_max(const int &number){
-	return big_compare(integer,to_string(number)) > 0 ? bigInt(integer) : bigInt(number); 
-}
-bigInt bigInt::big_max(const long &number){
-	return big_compare(integer,to_string(number)) > 0 ? bigInt(integer) : bigInt(number); 
-}
 bigInt bigInt::big_max(const long long &number){
 	return big_compare(integer,to_string(number)) > 0 ? bigInt(integer) : bigInt(number); 
 }
@@ -72,12 +56,6 @@ bigInt bigInt::big_max(const vector<bigInt> &v){
 
 //-------------------------------------------------------------------------------------------
 
-bigInt bigInt::big_min(const int &number){
-	return big_compare(integer,to_string(number)) < 0 ? bigInt(integer) : bigInt(number); 
-}
-bigInt bigInt::big_min(const long &number){
-	return big_compare(integer,to_string(number)) < 0 ? bigInt(integer) : bigInt(number); 
-}
 bigInt bigInt::big_min(const long long &number){
 	return big_compare(integer,to_string(number)) < 0 ? bigInt(integer) : bigInt(number); 
 }
@@ -108,28 +86,15 @@ bool bigInt::operator == (const string &input_string) throw (bigIntException){
 		return big_compare(integer,input_string)==0?true:false;
 	}else throw bigIntException();
 }
-bool bigInt::operator == (const int &number){
-	return big_compare(integer,to_string(number))==0?true:false;
-}
-bool bigInt::operator == (const long &number){
-	return big_compare(integer,to_string(number))==0?true:false;
-}
 bool bigInt::operator == (const long long &number){
 	return big_compare(integer,to_string(number))==0?true:false;
 }
 bool bigInt::operator > (const bigInt &another){
 	return big_compare(integer, another.integer)>0?true:false;
 }
-bool bigInt::operator > (const int &number){
-	return big_compare(integer,to_string(number))>0?true:false;
-}
-bool bigInt::operator > (const long &number){
-	return big_compare(integer,to_string(number))>0?true:false;
-}
 bool bigInt::operator > (const long long &number){
 	return big_compare(integer,to_string(number))>0?true:false;
 }
-
 bool bigInt::operator > (const string &input_string) throw (bigIntException){
 	if(checkValidInt(input_string)){
 		return big_compare(integer,input_string)>0?true:false;
@@ -139,16 +104,9 @@ bool bigInt::operator > (const string &input_string) throw (bigIntException){
 bool bigInt::operator < (const bigInt &another){
 	return big_compare(integer, another.integer)<0?true:false;
 }
-bool bigInt::operator < (const int &number){
-	return big_compare(integer,to_string(number))<0?true:false;
-}
-bool bigInt::operator < (const long &number){
-	return big_compare(integer,to_string(number))<0?true:false;
-}
 bool bigInt::operator < (const long long &number){
 	return big_compare(integer,to_string(number))<0?true:false;
 }
-
 bool bigInt::operator < (const string &input_string) throw (bigIntException){
 	if(checkValidInt(input_string)){
 		return big_compare(integer,input_string)<0?true:false;
