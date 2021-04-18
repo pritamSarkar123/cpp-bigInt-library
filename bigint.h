@@ -187,29 +187,44 @@ class bigInt{
 		bigInt big_minimal_rem(string input_string) throw (bigIntException);
 		bigInt big_minimal_rem(bigInt another);
 		//-------------------------------------------------------------------------------------
+		bigInt operator >> (long long n);
+		void operator >>=(long long n);
+		bigInt operator << (long long n);
+		void operator <<=(long long n);
+		long long getLowestSetBit();// returns the inde of the lowest set bit in the bigint<-
+		bool big_test_bit(long long n); //Returns true if and only if the designated bit is set.<-
+		int big_signum();//Returns the signum function of this BigInteger.
+		//-------------------------------------------------------------------------------------
+		bigInt operator ~ ();
+		void bitwise_not_update();
+		static string big_not(string s);
+		static string big_and(string s1,string s2);
+		static string big_or(string s1,string s2);
+		static string big_xor(string s1,string s2);
+		static string filter(string &s1,string &s2);
+
+		bigInt operator & (bigInt another);
+		bigInt operator & (long long number);
+		bigInt operator & (string input_string) throw (bigIntException);
+		void bitwise_and_update(bigInt another);
+		void bitwise_and_update(long long number);
+		void bitwise_and_update(string input_string) throw (bigIntException);
+
+		bigInt operator | (bigInt another);
+		bigInt operator | (long long number);
+		bigInt operator | (string input_string) throw (bigIntException);
+		void bitwise_or_update(bigInt another);
+		void bitwise_or_update(long long number);
+		void bitwise_or_update(string input_string) throw (bigIntException);
+
+		bigInt operator ^ (bigInt another);
+		bigInt operator ^ (long long number);
+		bigInt operator ^ (string input_string) throw (bigIntException);
+		void bitwise_xor_update(bigInt another);
+		void bitwise_xor_update(long long number);
+		void bitwise_xor_update(string input_string) throw (bigIntException);
+		//-----------------------------------------------
 		//TODO: remaining
 		bool primeProbability(int certainly);
-		//--------------------------------------------------------------------------
-		/*
-			bigInt big_shift_left(long long n);//<-
-			bigInt big_shift_right(long long n);//<-
-			bool big_test_bit(long long n);
-			int getLowestSetBit();
-		*/
-		//-----------------------------------------------------------------------------------------
-		bigInt big_shift_left(long long n);//<-
-		bigInt big_shift_right(long long n);//<-
-		int getLowestSetBit();// returns the inde of the lowest set bit in the bigint<-
-		int big_signum();//Returns the signum function of this BigInteger.
-		bool big_test_bit(long long n); //Returns true if and only if the designated bit is set.<-
-		//-----------------------------------------------------------------------------------
-		static bigInt big_bitwise_not(bigInt b); //~b
-		static bigInt big_bitwise_and(bigInt b1,bigInt b2); // b1 & b2
-		static bigInt big_bitwise_and_not(bigInt b1,bigInt b2); //b1 & ~b2
-		static bigInt big_bitwise_or(bigInt b1,bigInt b2); // b1 | b2
-		static bigInt big_bitwise_or_not(bigInt b1,bigInt b2); //b1 | ~b2
-		static bigInt big_bitwise_xor(bigInt b1,bigInt b2); // b1 ^ b2
-		static bigInt big_bitwise_xor_not(bigInt b1,bigInt b2); //b1 ^ ~b2
-		//-----------------------------------------------
 };
 #endif

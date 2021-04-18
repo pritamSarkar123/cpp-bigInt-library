@@ -4,11 +4,11 @@
 using namespace std;
 
 int main(){
-	bigInt b(11);
-	cout<<b<<endl;
-	b.bit_clear_and_update(3);
-	cout<<b<<endl;
-	cin>>b;
-	cout<<b<<endl;
+	bigInt d(-11);
+	bigInt e(5);
+	cout<<d<<" "<<bigInt::toBinary(d)<<endl;
+	cout<<e<<" "<<bigInt::toBinary(e)<<endl;
+	e=d|e;
+	cout<<e<<" "<<bigInt::toBinary(e)<<endl;
 	return 0;
 }

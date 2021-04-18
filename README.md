@@ -151,10 +151,6 @@ void bit_flip_and_update(long long position);<br />
 bigInt clear_bit(long long position);<br />
 bigInt flip_bit(long long position);<br />
 //-----------------------------------------------------------------------<br />
-//TODO: remaining<br />
-//--------------------------------------------------------------<br />
-bool primeProbability(int certainly);<br />
-//------------------------------------<br />
 static string big_mod_inv(string s1,string s2);
 static string big_mod_power(string s1,string s2,string s3);
 static string big_minimal_reminder(string s1,string s2);
@@ -170,19 +166,43 @@ bigInt big_mod_pow(long long exponent,long long number);<br />
 bigInt big_minimal_rem(long long number);<br />
 bigInt big_minimal_rem(string input_string) throw (bigIntException);<br />
 bigInt big_minimal_rem(bigInt another);<br />
-//---------------------------------------------<br />
-bigInt big_shift_left(int n);<br />
-bigInt big_shift_right(int n);<br />
-int getLowestSetBit();// returns the inde of the lowest set bit in the bigint<br />
+//-------------------------------------------------------------------------------------<br />
+bigInt operator >> (long long n);<br />
+void operator >>=(long long n);<br />
+bigInt operator << (long long n);<br />
+void operator <<=(long long n);<br />
+long long getLowestSetBit();// returns the inde of the lowest set bit in the bigint<-<br />
+bool big_test_bit(long long n); //Returns true if and only if the designated bit is set.<-<br />
 int big_signum();//Returns the signum function of this BigInteger.<br />
-bool big_test_bit(int n); //Returns true if and only if the designated bit is set.<br />
-//---------------------------------------------------- <br />
-//-------------------------------------------------------------<br />
-static bigInt big_bitwise_not(bigInt b); //~b <br />
-static bigInt big_bitwise_and(bigInt b1,bigInt b2); // b1 & b2 <br />
-static bigInt big_bitwise_and_not(bigInt b1,bigInt b2); //b1 & ~b2 <br />
-static bigInt big_bitwise_or(bigInt b1,bigInt b2); // b1 | b2 <br />
-static bigInt big_bitwise_or_not(bigInt b1,bigInt b2); //b1 | ~b2 <br />
-static bigInt big_bitwise_xor(bigInt b1,bigInt b2); // b1 ^ b2 <br />
-static bigInt big_bitwise_xor_not(bigInt b1,bigInt b2); //b1 ^ ~b2 <br />
+//-------------------------------------------------------------------------------------<br />
+bigInt operator ~ ();<br />
+void bitwise_not_update();<br />
+static string big_not(string s);<br />
+static string big_and(string s1,string s2);<br />
+static string big_or(string s1,string s2);<br />
+static string big_xor(string s1,string s2);<br />
+static string filter(string &s1,string &s2);<br />
+//---------------------------------------------------------------------------------------<br />
+bigInt operator & (bigInt another);<br />
+bigInt operator & (long long number);<br />
+bigInt operator & (string input_string) throw (bigIntException);<br />
+void bitwise_and_update(bigInt another);<br />
+void bitwise_and_update(long long number);<br />
+void bitwise_and_update(string input_string) throw (bigIntException);<br />
+//-------------------------------------------------------------------------------------------<br />
+bigInt operator | (bigInt another);<br />
+bigInt operator | (long long number);<br />
+bigInt operator | (string input_string) throw (bigIntException);<br />
+void bitwise_or_update(bigInt another);<br />
+void bitwise_or_update(long long number);<br />
+void bitwise_or_update(string input_string) throw (bigIntException);<br />
+bigInt operator ^ (bigInt another);<br />
+bigInt operator ^ (long long number);<br />
+bigInt operator ^ (string input_string) throw (bigIntException);<br />
+void bitwise_xor_update(bigInt another);<br />
+void bitwise_xor_update(long long number);<br />
+void bitwise_xor_update(string input_string) throw (bigIntException);<br />
 //-----------------------------------------------<br />
+//TODO: remaining<br />
+//--------------------------------------------------------------<br />
+bool primeProbability(int certainly);<br />

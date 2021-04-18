@@ -21,13 +21,9 @@
 	bigInt clear_bit(long long position);
 	bigInt flip_bit(long long position);
 
-	static string toBinary(int &number);<br />
-	static string toBinary(long &number);<br />
 	static string toBinary(long long &number);<br />
 	static string toBinary(string input_string) throw (bigIntException);<br />
 	static string toBinary(bigInt &another);<br />
-	static string toDecimal(int &number) throw (bigIntException);<br />
-	static string toDecimal(long &number) throw (bigIntException);<br />
 	static string toDecimal(long long &number) throw (bigIntException);<br />
 	static string toDecimal(string &input_string) throw (bigIntException);<br />
 	static string toDecimal(bigInt &another) throw (bigIntException);<br />
@@ -36,7 +32,11 @@
 	static string binaryToBigInt(string s);
 	long long bit_length();
 	long long bit_count(char x);
+
+	
+
 */
+
 bigInt bigInt::clear_bit(long long position){
 	if(position<0) return bigInt(integer);
 	string binary=bigIntToBinary(integer);
@@ -116,7 +116,7 @@ string bigInt::toBinary(string input_string) throw (bigIntException){
 		return bigIntToBinary(input_string);
 	} else throw bigIntException();
 }
-string bigInt::toBinary(const bigInt another){
+string bigInt::toBinary(bigInt another){
 	return bigIntToBinary(another.integer);
 }
 //-------------------------------------------------------------------------
@@ -151,16 +151,16 @@ string bigInt::bigIntToBinary(string s){
 	// converting non nwgative part to binary
 	string b="";
 	string rem,quo;
-	while(big_compare(s,"1")!=0){
+	while(big_compare(s,"1")!=0 && big_compare(s,"0")!=0){
 		quo=big_div(s,"2");
 		rem=big_sub(s,big_mul(quo,"2"));
 		b=rem+b;
 		s=quo;
 	}
-	b="1"+b;
+	b=s+b;
 	if(negative){// need to perform 2's complement
 		string ans="";
-		int i=b.size()-1;
+		long long i=b.size()-1;
 		while(b[i]!='1' && i>=0){ // r to l untill 1 keep as it is
 			ans=b[i]+ans;
 			i--;
@@ -171,7 +171,9 @@ string bigInt::bigIntToBinary(string s){
 			else ans='1'+ans;
 			i--;
 		}
-		b="2"+ans; // 2 means in 2's complement form
+		i=0;
+		while(ans[i]=='1') i++;
+		b="2"+ans.substr(i,ans.length()-i); // 2 means in 2's complement form
 	}
 	return b;
 }
@@ -182,14 +184,14 @@ string bigInt::binaryToBigInt(string s){
 		negative=true;
 	}
 	string decimal = "0";
-	int i=0,pos;
-	int len=s.length();
-	while(i<len){
+	long long len=s.length();
+	long long i=len-1,pos;
+	while(i>=0){
 		pos=len-i-1;
 		if(s[pos]!='0'){
 			decimal=big_sum(decimal,big_power("2",to_string(i)));
 		}
-		i++;
+		i--;
 	}
 	if(negative){
 		string length=to_string(s.length());
