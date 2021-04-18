@@ -19,6 +19,47 @@ class bigIntException:public exception{
 
 class bigInt{
 	string integer;
+	static string big_not(string s);
+	static string big_and(string s1,string s2);
+	static string big_or(string s1,string s2);
+	static string big_xor(string s1,string s2);
+	static string filter(string &s1,string &s2);
+	//--------------------------------------------------------------------------
+	static string bigIntToBinary(string s);
+	static string binaryToBigInt(string s);
+	//--------------------------------------------------------------------------
+	static bool checkValidInt(string input_string);
+	static bool checkValidBin(string input_string);
+	//---------------------------------------------------------------------------
+	static bool if_even(const string &s);
+	//---------------------------------------------------------------------------
+	static int big_compare(const string &s1,const string &s2);
+	//---------------------------------------------------------------------------
+	static string helper_sub(string s1,string s2);
+	static string big_sub(string s1,string s2);
+	static string big_sum(string s1,string s2);
+	static string big_mul(string s1, string s2);
+	//---------------------------------------------------------------------------
+	static string big_div(string s1,string s2);
+	static string big_mod(string s1,string s2);
+	//---------------------------------------------------------------------------
+	static string big_power(string s1,string s2);
+	//---------------------------------------------------------------------------
+	static string big_fact(const string &s1);
+	//---------------------------------------------------------------------------
+	static string bigGcd(string s1,string s2);
+	static string bigLcm(string s1,string s2);
+	//---------------------------------------------------------------------------
+	static string big_mod_inv(string s1,string s2);
+	static string big_mod_power(string s1,string s2,string s3);
+	static string big_minimal_reminder(string s1,string s2);
+	//---------------------------------------------------------------------------
+	static string big_root(string a,string b);
+	//---------------------------------------------------------------------------
+	//---------------------------------------------------------------------------
+	//--------------------------------------------------------------------------
+	//--------------------------------------------------------------------------
+	//--------------------------------------------------------------------------
 	public:
 		bigInt();
 		bigInt(long long number);
@@ -27,18 +68,14 @@ class bigInt{
 		string big_abs();
 		bigInt operator ! ();
 		void operator = (const bigInt &another);
+		static string value(long long number);
 		//----------------------------------------------------------------
 		friend ostream & operator << (ostream &out, const bigInt &b);
 		friend istream & operator >> (istream &in,bigInt &b);
-		//--------------------------------------------------------------
-		static bool checkValidInt(string input_string);
-		static bool checkValidBin(string input_string);
-		static string value(long long number);
 		//---------------------------------------------------------------
 		static bool big_even (const bigInt &another); 
 		static bool big_even (const string &input_string) throw (bigIntException);
 		static bool big_even (const long long &number);
-		static bool if_even(const string &s);
 		//---------------------------------------------------------------
 		bool operator > (const bigInt &another); 
 		bool operator > (const string &input_string) throw (bigIntException);
@@ -47,7 +84,6 @@ class bigInt{
 		bool operator < (const bigInt &another); 
 		bool operator < (const string &input_string) throw (bigIntException);
 		bool operator < (const long long &number);
-		static int big_compare(const string &s1,const string &s2);
 		//---------------------------------------------------------------
 		bool operator == (const bigInt &another);
 		bool operator == (const string &input_string) throw (bigIntException);
@@ -63,11 +99,6 @@ class bigInt{
 		bigInt big_min(const bigInt &another);
 		bigInt big_min(const string &input_string) throw (bigIntException);
 		bigInt big_min(const long long &number);
-		//-----------------------------------------------------------------
-		static string helper_sub(string s1,string s2);
-		static string big_sub(string s1,string s2);
-		static string big_sum(string s1,string s2);
-		static string big_mul(string s1, string s2);
 		//-----------------------------------------------------------
 		bigInt operator - (long long number);
 		bigInt operator - (string input_string) throw (bigIntException);
@@ -96,9 +127,6 @@ class bigInt{
 		void operator *= (string input_string) throw (bigIntException);
 		void operator *= (bigInt another);	
 		//------------------------------------------------------------------
-		static string big_div(string s1,string s2);
-		static string big_mod(string s1,string s2);
-		//------------------------------
 		bigInt operator / (string input_string) throw (bigIntException);
 		bigInt operator / (long long number) throw (bigIntException);
 		bigInt operator / (bigInt another) throw (bigIntException);
@@ -122,21 +150,16 @@ class bigInt{
 		bigInt big_pow(bigInt another);
 		bigInt big_pow(string input_string) throw (bigIntException);
 		bigInt big_pow(long long number);
-		static string big_power(string s1,string s2);
 		//--------------------------------------------------------------------
 		static bigInt big_factorial(const long long &number);
 		static bigInt big_factorial(const string &input_string) throw (bigIntException);
 		static bigInt big_factorial(const bigInt &another);
-		static string big_fact(const string &s1);
 		//--------------------------------------------------------------
 		double toDouble(); // making the bigInt to double
 		float toFloat(); //making the bigint into float
 		int toInt();// bigInt to int
 		long toLong();//  bigInt to long
 		long long toLongLong();// bigInt to long
-		//-------------------------------------------------------------------
-		static string bigGcd(string s1,string s2);
-		static string bigLcm(string s1,string s2);
 		//-----------------------------------------------------------------------
 		bigInt big_gcd(bigInt another);
 		bigInt big_gcd(string input_string) throw (bigIntException);
@@ -149,7 +172,6 @@ class bigInt{
 		bigInt big_root_by(long long number);
 		bigInt big_root_by(bigInt another);
 		bigInt big_root_by(string input_string) throw (bigIntException);
-		static string big_root(string a,string b);
 		//------------------------------------------------------------------------------
 		static string toBinary(long long number);
 		static string toBinary(string input_string) throw (bigIntException);
@@ -157,8 +179,6 @@ class bigInt{
 		static string toDecimal(long long number) throw (bigIntException);
 		static string toDecimal(string input_string) throw (bigIntException);
 		static string toDecimal(bigInt another) throw (bigIntException);
-		static string bigIntToBinary(string s);
-		static string binaryToBigInt(string s);
 		//----------------------------------------------------------------------------
 		string hashCode();
 		long long bit_length();
@@ -171,10 +191,6 @@ class bigInt{
 		bigInt clear_bit(long long position);
 		bigInt flip_bit(long long position);
 		//---------------------------------------------------------------------------------------
-		static string big_mod_inv(string s1,string s2);
-		static string big_mod_power(string s1,string s2,string s3);
-		static string big_minimal_reminder(string s1,string s2);
-		//---------------------------------------------------------------------
 		bigInt big_mod_inverse(bigInt another);
 		bigInt big_mod_inverse(string input_string) throw (bigIntException);
 		bigInt big_mod_inverse(long long number);
@@ -197,12 +213,6 @@ class bigInt{
 		//-------------------------------------------------------------------------------------
 		bigInt operator ~ ();
 		void bitwise_not_update();
-		static string big_not(string s);
-		static string big_and(string s1,string s2);
-		static string big_or(string s1,string s2);
-		static string big_xor(string s1,string s2);
-		static string filter(string &s1,string &s2);
-
 		bigInt operator & (bigInt another);
 		bigInt operator & (long long number);
 		bigInt operator & (string input_string) throw (bigIntException);
