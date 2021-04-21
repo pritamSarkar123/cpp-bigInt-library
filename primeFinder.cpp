@@ -5,6 +5,7 @@
 
 bool bigInt::primeProbability(int certainity) throw (bigIntException){
     if(certainity<0 || certainity>100) throw bigIntException("certainity limit exceedeed");
+    if(certainity==0) return true;
     string cert=to_string(certainity);
     string root_s=big_root(integer,"2");
     string a=big_mul(root_s,cert);

@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(){
-	bigInt b(16);
-	cout<<b.primeProbability(0)<<endl;
+	bigInt b(1373);
+	cout<<b.primeProbability(10)<<endl;
 	return 0;
 }
