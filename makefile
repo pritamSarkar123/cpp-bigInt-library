@@ -1,5 +1,5 @@
-big_int_test: application_my.o bigInt_constructors.o methods_one.o compare_to.o add_sub.o big_mult.o big_div_pow.o gcd_lcm.o rootFind.o bigIntBin.o bigIntBin2.o
-	g++ application_my.o bigInt_constructors.o methods_one.o compare_to.o add_sub.o big_mult.o big_div_pow.o gcd_lcm.o rootFind.o bigIntBin.o bigIntBin2.o -o big_int_test
+big_int_test: application_my.o bigInt_constructors.o methods_one.o compare_to.o add_sub.o big_mult.o big_div_pow.o gcd_lcm.o rootFind.o bigIntBin.o bigIntBin2.o primeFinder.o
+	g++ application_my.o bigInt_constructors.o methods_one.o compare_to.o add_sub.o big_mult.o big_div_pow.o gcd_lcm.o rootFind.o bigIntBin.o bigIntBin2.o primeFinder.o -o big_int_test
 application_my.o: application_my.cpp
 	g++ -c application_my.cpp
 bigInt_constructors.o: bigInt_constructors.cpp
@@ -22,6 +22,8 @@ bigIntBin.o: bigIntBin.cpp
 	g++ -c bigIntBin.cpp
 bigIntBin2.o: bigIntBin2.cpp
 	g++ -c bigIntBin2.cpp
+primeFinder.o: primeFinder.cpp
+	g++ -c primeFinder.cpp
 clean: 
 	rm *o big_int_test
 

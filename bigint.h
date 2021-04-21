@@ -235,6 +235,6 @@ class bigInt{
 		void bitwise_xor_update(string input_string) throw (bigIntException);
 		//-----------------------------------------------
 		//TODO: remaining
-		bool primeProbability(int certainly);
+		bool primeProbability(int certainity) throw (bigIntException);
 };
 #endif

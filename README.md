@@ -70,11 +70,11 @@ void operator -= (string input_string) throw (bigIntException);<br />
 void operator -= (bigInt another);<br />
 //------------------------------------------------------<br />
 bigInt operator * (long long number);<br />
-bigInt operator * (string input_string) throw (bigIntException);<br />
-bigInt operator * (bigInt another);<br />
+bigInt operator _ (string input_string) throw (bigIntException);<br />
+bigInt operator _ (bigInt another);<br />
 //-------------------------------------------------------------<br />
-void operator *= (long long number);<br />
-void operator *= (string input*string) throw (bigIntException);<br />
+void operator _= (long long number);<br />
+void operator _= (string input*string) throw (bigIntException);<br />
 void operator *= (bigInt another);<br />
 //----------------------------------------------------------------------<br />
 static string big_div(string s1,string s2);<br />
@@ -143,7 +143,7 @@ static bigInt binaryToBigInt(string s);<br />
 string hashCode();<br />
 long long bit_length();<br />
 long long bit_count(char x);<br />
-//--------------------------------	----------------<br />
+//-------------------------------- ----------------<br />
 bigInt bit_clear(long long position);<br />
 bigInt bit_flip(long long position);<br />
 void bit_clear_and_update(long long position);<br />
@@ -205,4 +205,4 @@ void bitwise_xor_update(string input_string) throw (bigIntException);<br />
 //-----------------------------------------------<br />
 //TODO: remaining<br />
 //--------------------------------------------------------------<br />
-bool primeProbability(int certainly);<br />
+bool primeProbability(int certainity) throw (bigIntException);<br />
