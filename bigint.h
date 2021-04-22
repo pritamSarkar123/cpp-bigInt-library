@@ -58,7 +58,7 @@ class bigInt{
 	public:
 		bigInt();
 		bigInt(long long number);
-		bigInt(string input_string) throw (bigIntException);
+		bigInt(string input_string) throw (bigIntException); // copy constructor making problem -_-
 		string get();
 		string big_abs();
 		bigInt operator ! ();

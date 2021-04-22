@@ -1,9 +1,9 @@
 bigInt();<br />
 bigInt(long long number);<br />
-bigInt(string input*string) throw (bigIntException);<br />
 string get();<br />
 string big_abs();<br />
 bigInt operator ! ();<br />
+bigInt(string input*string) throw (bigIntException);<br />
 void operator = (const bigInt &another);<br />
 //--------------------------------------------------------------<br />
 friend ostream & operator << (ostream &out, const bigInt &b);<br />
